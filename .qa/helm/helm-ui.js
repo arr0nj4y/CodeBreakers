@@ -93,11 +93,13 @@
  const more = el('div', 'rail-more'); more.id = 'railMore'; more.hidden = true;
  document.body.append(more);
  const moreBtn = qs('.rail-more-btn', rail);
+ const closeMore = () => { more.hidden = true; moreBtn.setAttribute('aria-expanded', 'false'); };
  const toolsHost = $('railTools');
- const placeTools = () => { const mobile = matchMedia('(max-width:899px)').matches; const host = mobile ? more : toolsHost; qsa('.rail-tool', rail).concat(qsa('.rail-tool', more)).forEach(b => host.append(b)); if (!mobile) more.hidden = true; };
+ const placeTools = () => { const mobile = matchMedia('(max-width:899px)').matches; const host = mobile ? more : toolsHost; qsa('.rail-tool', rail).concat(qsa('.rail-tool', more)).forEach(b => host.append(b)); if (!mobile) closeMore(); };
  matchMedia('(max-width:899px)').addEventListener('change', placeTools); placeTools();
  moreBtn.addEventListener('click', () => { more.hidden = !more.hidden; moreBtn.setAttribute('aria-expanded', String(!more.hidden)); });
- document.addEventListener('click', e => { if (!more.hidden && !e.target.closest('#railMore,.rail-more-btn')) { more.hidden = true; moreBtn.setAttribute('aria-expanded', 'false'); } });
+ document.addEventListener('click', e => { if (!more.hidden && !e.target.closest('#railMore,.rail-more-btn')) closeMore(); });
+ document.addEventListener('keydown', e => { if (e.key === 'Escape' && !more.hidden) { e.preventDefault(); closeMore(); moreBtn.focus(); } });
 
  const SCREENS = ['bootScreen', 'menuScreen', 'worldScreen', 'selectScreen', 'combatScreen', 'teacherScreen', 'arcadeScreen'];
  const hideAll = () => { SCREENS.forEach(id => { if ($(id)) $(id).hidden = true; }); app.hidden = true; };
@@ -115,7 +117,7 @@
  rail.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b) { sfx('select'); GO[b.dataset.go](); } });
  document.addEventListener('click', e => {
   const t = e.target.closest('.rail-tool'); if (!t) return;
-  more.hidden = true;
+  closeMore();
   const tool = t.dataset.tool;
   if (tool === 'profile') { if (window.CBAccounts) CBAccounts.openDialog(); else $('playerProfileButton').click(); }
   if (tool === 'help') $('howPlay').click();
@@ -154,7 +156,7 @@
   table?.setVisible(name === 'deck' && !$('menuScreen').hidden);
   if (name === 'deck' && !$('menuScreen').hidden) { renderDeck(name !== lastScreen); requestAnimationFrame(syncInset); }
   if (name === 'teacher') renderChart();
-  if (name !== lastScreen) { window.scrollTo(0, 0); qsa('.screen').forEach(s => s.scrollTop = 0); window.CBAccounts?.onScreen(name); }
+  if (name !== lastScreen) { closeMore(); window.scrollTo(0, 0); qsa('.screen').forEach(s => s.scrollTop = 0); window.CBAccounts?.onScreen(name); }
   lastScreen = name;
   syncPilot();
  }
@@ -277,11 +279,12 @@
  reducedQuery.addEventListener('change', syncMotion);
  $('reducedMotion')?.addEventListener('change', syncMotion);
  function staticTable() {
+  table = null;
   pins.classList.add('static');
   tableCanvas.hidden = true;
   tableCanvas.dataset.renderer = 'fallback';
   qs('.table-hint', deckEl).hidden = true;
-  qsa('.pin', pins).forEach((p, w) => { const a = Math.PI / 2 + w * Math.PI * 2 / 5; p.style.left = (50 + Math.cos(a) * 34) + '%'; p.style.top = (50 + Math.sin(a) * 30) + '%'; });
+  qsa('.pin', pins).forEach((p, w) => { const a = Math.PI / 2 + w * Math.PI * 2 / 5; p.style.removeProperty('transform'); p.style.left = (50 + Math.cos(a) * 34) + '%'; p.style.top = (50 + Math.sin(a) * 30) + '%'; });
  }
  try {
   table = HelmTable.create(tableCanvas, {
@@ -519,10 +522,21 @@
   }
   const ret = $('arcadeReturn'); if (ret) ret.innerHTML = `${icon('chevron-left')}<span>All modes</span>`;
   buildArcadeBriefing();
+  // The arcade scrolls inside its fixed screen, independently of the window.
+  // Keep a newly opened challenge (or the returning catalog) at its heading.
+  const resetArcadeView = () => requestAnimationFrame(() => {
+   if (screen.hidden) return;
+   screen.scrollTo({ top: 0, behavior: 'instant' });
+   const heading = $('arcadePlay').hidden ? qs('.head-title h1', screen) : titleEl;
+   if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
+  });
+  const arcadeViewObserver = new MutationObserver(resetArcadeView);
+  arcadeViewObserver.observe($('arcadePlay'), { attributes: true, attributeFilter: ['hidden'] });
+  arcadeViewObserver.observe($('arcadeTrail'), { childList: true, characterData: true, subtree: true });
  }
  function buildCombat() {
   const screen = $('combatScreen');
-  header(screen, 'Combat arena', 'Answer logic questions to attack, raise shields and repair. Every strike is simulated.');
+  header(screen, 'Combat arena', 'Think fast. Code smart. Take down the NULL Sentinel.');
   $('playerFighter').setAttribute('role', 'img'); $('playerFighter').setAttribute('aria-label', 'Guardian');
   $('enemyFighter').setAttribute('role', 'img'); $('enemyFighter').setAttribute('aria-label', 'NULL Sentinel');
   $('attackBtn').innerHTML = `${icon('bolt')}<span>Attack</span>`;
@@ -608,6 +622,11 @@
  // ------------------------------------------------------------ boot
  function init() {
   safe(() => clearInterval(bootTimer));
+  const fallbackArt = table ? [] : WORLD_NAMES.map((_, w) => {
+   const value = getComputedStyle(document.documentElement).getPropertyValue(`--t-w${w}`).trim();
+   return value.startsWith('url(') ? value.slice(4, -1).trim().replace(/^['"]|['"]$/g, '') : '';
+  });
+  const boot = window.CBBoot?.start({ images: [A.logo, ...fallbackArt], tableReady: table?.ready, canvas: tableCanvas });
   const learnPath = $('learningPath'); if (learnPath) $('deckTraining').append(learnPath);
   safe(buildMission); safe(buildArcade); safe(buildCombat); safe(buildTeacher); safe(buildDialogs);
   safe(syncSize); safe(syncMusicTool); safe(syncPilot);
@@ -622,8 +641,10 @@
    }
   }).observe(document.body, { childList: true, subtree: true, characterData: true });
   if (!$('bootScreen').hidden || [...SCREENS.map($)].every(s => !s || s.hidden) && app.hidden) { hideAll(); showScreen('menu'); }
+  if (boot) $('bootScreen').hidden = false;
   syncScreen();
-  safe(() => window.CBAccounts?.init());
+  if (boot) { boot.markUIReady(); boot.ready.then(() => safe(() => window.CBAccounts?.init())); }
+  else safe(() => window.CBAccounts?.init());
  }
  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();

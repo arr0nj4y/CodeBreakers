@@ -8,6 +8,7 @@ const path = require('path');
 const assert = require('node:assert/strict');
 const fileUrl = 'file:///' + path.resolve('codebreakers_tripleA_cinematic_polish_v3.html').split(path.sep).join('/');
 const go = (page, target) => page.locator(`.rail-item[data-go="${target}"]`).click();
+const ready = page => page.waitForFunction(() => window.CBBoot?.active === false && document.getElementById('bootScreen')?.hidden);
 
 async function createPlayer(page, name, pin, code) {
  await page.locator('#accountStrip [data-act="new"]').click();
@@ -33,7 +34,7 @@ async function earnCheckpointXp(page) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
   const errors = []; page.on('pageerror', e => errors.push(e.message));
   page.on('dialog', d => d.accept());
-  await page.goto(fileUrl); await page.waitForTimeout(1200);
+  await page.goto(fileUrl); await ready(page);
   assert.match(await page.locator('#accountStrip').textContent(), /without a player profile/);
   await go(page, 'teacher');
   await page.locator('#classPanel [data-act="demo"]').click(); await page.waitForTimeout(400);
@@ -64,7 +65,7 @@ async function earnCheckpointXp(page) {
   await page.locator('#helmGate .gate-player', { hasText: 'Bea Ramirez' }).click();
   await page.locator('#gatePin').fill('1234');
   await Promise.all([page.waitForEvent('load'), page.locator('#helmGate button[type="submit"]').click()]);
-  await page.waitForTimeout(1200);
+  await ready(page);
   assert.equal(await page.locator('#deckXp').textContent(), '2280', 'Demo account loads its own progress');
   await page.locator('.rail-tool[data-tool="profile"]').click();
   await page.locator('#playerDialog [data-act="signout"]').click();
@@ -73,7 +74,7 @@ async function earnCheckpointXp(page) {
   assert.match(await page.locator('#gateError').textContent(), /does not match/, 'Wrong PIN is refused');
   await page.locator('#gatePin').fill('2468');
   await Promise.all([page.waitForEvent('load'), page.locator('#helmGate button[type="submit"]').click()]);
-  await page.waitForTimeout(1200);
+  await ready(page);
   assert.equal(await page.locator('#deckXp').textContent(), '20', 'Switching back restores the right progress');
   await go(page, 'teacher'); await page.waitForTimeout(400);
   const demoCode = await page.evaluate(() => CBAccounts.makeCode('DEM2A'));
@@ -93,14 +94,14 @@ async function earnCheckpointXp(page) {
   const teacher = await (await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' })).newPage();
   const student = await (await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' })).newPage();
   const errors = []; [teacher, student].forEach(p => p.on('pageerror', e => errors.push(e.message)));
-  await teacher.goto(`http://localhost:${port}/`); await teacher.waitForTimeout(1000);
+  await teacher.goto(`http://localhost:${port}/`); await ready(teacher);
   await go(teacher, 'teacher'); await teacher.waitForTimeout(500);
   await teacher.locator('#classTeacher').fill('Mr. Dizon'); await teacher.locator('#classNameInput').fill('STEM 12 - Luna');
   await teacher.locator('.class-create button[type="submit"]').click(); await teacher.waitForTimeout(500);
   const code = (await teacher.locator('#classCode').textContent()).trim();
   assert.match(await teacher.locator('.class-live').textContent(), /Live updates are on/);
 
-  await student.goto(`http://127.0.0.1:${port}/`); await student.waitForTimeout(1000);
+  await student.goto(`http://127.0.0.1:${port}/`); await ready(student);
   const unknown = await student.evaluate(() => CBAccounts.makeCode());
   await student.locator('#accountStrip [data-act="new"]').click();
   await student.locator('#wizName').fill('Rafael Tan');
@@ -125,7 +126,10 @@ async function earnCheckpointXp(page) {
   console.log('PASS: class server registration, server-checked class code, live roster update across devices.');
  } finally {
   server.kill();
-  fs.rmSync(dataDir, { recursive: true, force: true });
+  const resolvedDataDir = path.resolve(dataDir);
+  assert.equal(path.dirname(resolvedDataDir), path.resolve(os.tmpdir()));
+  assert.ok(path.basename(resolvedDataDir).startsWith('cb-class-'));
+  fs.rmSync(resolvedDataDir, { recursive: true, force: true });
   await browser.close();
  }
 })().catch(e => { console.error(e); process.exit(1); });

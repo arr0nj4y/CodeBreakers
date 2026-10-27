@@ -44,13 +44,16 @@
  float ct=cos(uTilt),st=sin(uTilt);p=vec3(p.x*ct-p.y*st,p.x*st+p.y*ct,p.z);vN=p;vUv=aUv;vW=uC+p*uR;gl_Position=uVP*vec4(vW,1.);}`;
  const PLANET_FS = `precision mediump float;uniform sampler2D uMap,uGlow;uniform vec3 uL,uEye,uAtmo,uGlowC,uEmit;uniform float uGain,uSel,uMode;
  varying vec3 vN,vW;varying vec2 vUv;
- void main(){vec3 n=normalize(vN),V=normalize(uEye-vW);float rim=pow(1.-max(dot(n,V),0.),2.6);
+ void main(){vec3 n=normalize(vN),V=normalize(uEye-vW);float facing=dot(n,V);float rim=pow(1.-max(facing,0.),3.0);
+ if(uMode>1.5){if(facing<0.)discard;float sun=smoothstep(-.3,.6,dot(n,uL));
+ float alpha=rim*(.17+.13*uSel)*(.35+.65*sun);gl_FragColor=vec4(uAtmo,alpha);return;}
  if(uMode>.5){gl_FragColor=vec4(uEmit*(.75+rim*.9),1.);return;}
  float ndl=dot(n,uL),lit=smoothstep(-.12,.55,ndl);vec3 base=texture2D(uMap,vUv).rgb;float g=texture2D(uGlow,vUv).r;
- vec3 col=base*(.05+1.02*lit*max(ndl,0.)+.06*lit);
+ vec3 col=base*(.10+.95*max(ndl,0.)+.05*lit);
+ col+=base*vec3(.025,.035,.045)*(n.y*.5+.5);
  col+=uGlowC*g*uGain*(.28+.85*(1.-lit));
- col+=uAtmo*rim*(.18+.8*lit);
- col+=vec3(pow(max(dot(reflect(-uL,n),V),0.),28.)*.16*lit);
+ col+=uAtmo*rim*(.15+.5*lit);
+ vec3 halfLight=normalize(uL+V);col+=vec3(pow(max(dot(n,halfLight),0.),42.)*.13*lit);
  col*=.9+.1*uSel;gl_FragColor=vec4(col,1.);}`;
  const TABLE_VS = `attribute vec2 aXZ;uniform mat4 uVP;varying vec2 vXZ;void main(){vXZ=aXZ;gl_Position=uVP*vec4(aXZ.x,0.,aXZ.y,1.);}`;
  const TABLE_FS = `precision mediump float;uniform float uYaw,uSweep;uniform vec3 uHolo;varying vec2 vXZ;
@@ -106,9 +109,11 @@
 
   const blank = (() => { const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([20, 28, 36, 255])); return t; })();
   const textures = WORLD.map(() => ({ map: blank, glow: blank }));
-  const loadTexture = (src, w, h, done) => {
+  const loadTexture = (src, w, h, done) => new Promise(resolve => {
    const img = new Image();
    img.onload = () => {
+    if (state.lost || gl.isContextLost()) { resolve(false); return; }
+    try {
     const c = document.createElement('canvas'); c.width = w; c.height = h; c.getContext('2d').drawImage(img, 0, 0, w, h);
     const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, c);
@@ -117,17 +122,19 @@
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     done(t); state.dirty = true;
+    resolve(true);
+    } catch (_) { resolve(false); }
    };
+   img.onerror = () => resolve(false);
    img.src = src;
-  };
-  (opts.planets || []).forEach((p, i) => {
-   if (!textures[i]) return;
-   loadTexture(p.map, 1024, 512, t => textures[i].map = t);
-   loadTexture(p.glow, 512, 256, t => textures[i].glow = t);
   });
+  const ready = Promise.all((opts.planets || []).flatMap((p, i) => !textures[i] ? [] : [
+   loadTexture(p.map, 1024, 512, t => textures[i].map = t),
+   loadTexture(p.glow, 512, 256, t => textures[i].glow = t)
+  ]));
 
   const state = { yaw: FRONT, target: FRONT, from: FRONT, t0: 0, dur: 0, selected: 0, scale: WORLD.map(() => .5), time: 0, last: 0,
-   paused: !!opts.paused, reduced: !!opts.reduced, inset: 0, visible: false, dirty: true, raf: 0, frame: 0, w: 1, h: 1, dpr: 1, vp: null, eye: [0, 0, 0], proj: [] };
+   paused: !!opts.paused, reduced: !!opts.reduced, lost: false, inset: 0, visible: false, dirty: true, raf: 0, frame: 0, w: 1, h: 1, dpr: 1, vp: null, eye: [0, 0, 0], proj: [] };
   const onPick = opts.onPick || (() => { });
   const onLayout = opts.onLayout || (() => { });
 
@@ -202,8 +209,24 @@
    gl.drawElements(gl.TRIANGLES, si.length, gl.UNSIGNED_SHORT, 0);
    gl.disableVertexAttribArray(ap); gl.disableVertexAttribArray(au);
 
-   // Projection beams and table markers.
+   // A separate, slightly larger translucent sphere gives each world a soft
+   // atmosphere outside its silhouette. It shares the existing mesh and clock,
+   // so pause, reduced motion and hidden-screen rendering still apply.
    gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA); gl.depthMask(false);
+   gl.useProgram(planetP.p);
+   gl.bindBuffer(gl.ARRAY_BUFFER, sphereBuf); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sphereIdx);
+   gl.enableVertexAttribArray(ap); gl.enableVertexAttribArray(au);
+   gl.vertexAttribPointer(ap, 3, gl.FLOAT, false, 20, 0); gl.vertexAttribPointer(au, 2, gl.FLOAT, false, 20, 12);
+   gl.uniform1f(planetP.u.uMode, 2);
+   for (let i = 0; i < 5; i++) {
+    gl.uniform3fv(planetP.u.uC, pos[i]); gl.uniform1f(planetP.u.uR, state.scale[i] * 1.06);
+    gl.uniform1f(planetP.u.uSpin, state.time * .12 + i * 1.3); gl.uniform1f(planetP.u.uTilt, .32 + i * .05);
+    gl.uniform3fv(planetP.u.uAtmo, WORLD[i].atmo); gl.uniform1f(planetP.u.uSel, i === state.selected ? 1 : 0);
+    gl.drawElements(gl.TRIANGLES, si.length, gl.UNSIGNED_SHORT, 0);
+   }
+   gl.disableVertexAttribArray(ap); gl.disableVertexAttribArray(au);
+
+   // Projection beams and table markers.
    gl.useProgram(lineP.p); gl.uniformMatrix4fv(lineP.u.uVP, false, vp);
    const al = lineP.a('aPos'); gl.bindBuffer(gl.ARRAY_BUFFER, lineBuf); gl.enableVertexAttribArray(al);
    for (let i = 0; i < 5; i++) {
@@ -243,12 +266,12 @@
 
   function loop(now) {
    state.raf = 0;
-   if (!state.visible) return;
+   if (!state.visible || state.lost) return;
    const animating = state.dur || !(state.paused || state.reduced) || state.dirty || state.scale.some((s, i) => Math.abs(s - (i === state.selected ? .64 : .5)) > .002);
    if (animating) draw(now);
    if (animating) state.raf = requestAnimationFrame(loop);
   }
-  const wake = () => { if (state.visible && !state.raf) state.raf = requestAnimationFrame(loop); };
+  const wake = () => { if (state.visible && !state.lost && !state.raf) state.raf = requestAnimationFrame(loop); };
 
   // Pointer: tap a planet to choose it, drag the table to turn it.
   let drag = null;
@@ -275,11 +298,18 @@
    if (hit >= 0) onPick(hit, 'tap');
   };
   canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end);
-  canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); opts.onLost?.(); });
+  canvas.addEventListener('webglcontextlost', e => {
+   e.preventDefault();
+   state.lost = true; state.visible = false;
+   if (state.raf) cancelAnimationFrame(state.raf);
+   state.raf = 0; ro?.disconnect();
+   opts.onLost?.();
+  });
 
   canvas.dataset.renderer = 'webgl';
   canvas.dataset.paused = String(state.paused || state.reduced);
   return {
+   ready,
    select(i, animate = true) {
     state.selected = i;
     const target = FRONT - i * TAU / 5;
@@ -287,7 +317,7 @@
     else { state.from = state.yaw; state.target = target; state.t0 = performance.now(); state.dur = 720; }
     state.dirty = true; wake();
    },
-   setVisible(v) { state.visible = v; if (v) { state.dirty = true; state.last = 0; resize(); wake(); } },
+   setVisible(v) { if (state.lost) return; state.visible = v; if (v) { state.dirty = true; state.last = 0; resize(); wake(); } },
    setMotion({ paused, reduced }) { if (paused !== undefined) state.paused = paused; if (reduced !== undefined) state.reduced = reduced; canvas.dataset.paused = String(state.paused || state.reduced); state.dirty = true; wake(); },
    setInset(v) { if (Math.abs(v - state.inset) > .002) { state.inset = v; state.dirty = true; wake(); } },
    get frame() { return state.frame; },

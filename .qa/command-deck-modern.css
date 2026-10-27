@@ -1,0 +1,175 @@
+/* Command Deck presentation: existing worlds, missions, progress and copy. */
+html.helm #menuScreen {
+  --deck-surface: #111822;
+  --deck-line: #303b49;
+  --deck-muted: #aebaca;
+  --deck-accent: #f2bd7d;
+  background: #090e15 !important;
+}
+html.helm #helmDeck { padding: 32px clamp(20px, 3vw, 44px) 48px; gap: 0; }
+html.helm #helmDeck .deck-head { align-items: center; gap: 18px; padding: 0 0 26px; margin-bottom: 24px; border-color: var(--deck-line); }
+html.helm #helmDeck .deck-head::after { width: 64px; height: 2px; background: var(--deck-accent); }
+html.helm #helmDeck .head-cap {
+  flex: 0 0 48px;
+  min-height: 48px;
+  align-self: flex-start;
+  border: 1px solid #725036;
+  border-radius: 13px;
+  background: #2d221c url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f2bd7d' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Cellipse cx='12' cy='12' rx='11' ry='3.5' transform='rotate(-28 12 12)'/%3E%3C/svg%3E") center/27px no-repeat;
+}
+html.helm #helmDeck .head-title { flex: 1 1 300px; }
+html.helm #helmDeck .head-title h1 { color: #f2f2f4; font: 600 clamp(1.625rem, 2.5vw, 2.125rem)/1.2 var(--f-body); text-transform: none; letter-spacing: -.035em; }
+html.helm #helmDeck .head-title p { margin-top: 10px; color: var(--deck-muted); font: 400 .875rem/1.65 var(--f-body); }
+html.helm #helmDeck .head-cells { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 9px; min-width: 0; }
+html.helm #helmDeck .head-cells .cell { min-width: 110px; min-height: 80px; padding: 14px 16px; gap: 10px; border: 1px solid #483e33; border-radius: 11px; background: linear-gradient(135deg, #241f1e, #151a24); box-shadow: inset 0 1px 0 #ffdc9c07; }
+html.helm #helmDeck .head-cells .cell span { color: #c0b4a5; font: 500 .625rem/1.5 var(--f-body); letter-spacing: .07em; }
+html.helm #helmDeck .head-cells .cell b { color: #f1c998; font: 600 1.375rem/1 var(--f-mono); letter-spacing: -.04em; white-space: nowrap; }
+html.helm #helmDeck .account-strip { gap: 14px; margin: 0 0 22px; padding: 13px 16px; border: 1px solid var(--deck-line); border-radius: 11px; background: #121b27; box-shadow: none; color: #b3c1d3; font: 400 .8125rem/1.6 var(--f-body); }
+html.helm #helmDeck .account-strip > span { flex: 1 1 240px; }
+html.helm #helmDeck .account-strip b { color: #e5edf9; }
+html.helm #helmDeck .account-strip button { min-height: 38px; padding: 9px 13px; border: 1px solid #4d4a43; border-radius: 8px; background: #252627; color: #e7d2b8; font: 600 .75rem/1.4 var(--f-body); }
+
+/* Give the mission list its own column, leaving the 3D table unobstructed. */
+html.helm #helmDeck .deck-stage { display: grid; grid-template-columns: minmax(310px, .85fr) minmax(0, 1.65fr); gap: 20px; align-items: stretch; }
+html.helm #helmDeck .table-wrap {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 560px;
+  height: auto;
+  border: 1px solid #33485a;
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 55% 40%, #19304366, transparent 65%), linear-gradient(145deg, #101923, #090e17 70%);
+  box-shadow: inset 0 1px 0 #b4dfff08, 0 12px 32px #0002;
+  clip-path: none;
+  overflow: hidden;
+}
+html.helm #helmDeck #warTable { border-radius: 15px; }
+html.helm #helmDeck .sector {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  left: auto;
+  bottom: auto;
+  z-index: 1;
+  width: auto;
+  min-width: 0;
+  max-height: none;
+  gap: 18px;
+  padding: 24px 22px;
+  border: 1px solid #3e4148;
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 0 0, #bd783010, transparent 70%), var(--deck-surface);
+  box-shadow: 0 8px 24px #0002;
+  clip-path: none;
+  overflow: visible;
+}
+html.helm #helmDeck .sector-top { gap: 14px; align-items: center; }
+html.helm #helmDeck .sector-top > div { min-width: 0; }
+html.helm #helmDeck .sector-thumb { width: 56px; height: 56px; border: 1px solid #414351; border-radius: 12px; background-color: #161e2b; background-size: 54px; }
+html.helm #helmDeck #sectorName { color: #f1eee8; font: 600 1.375rem/1.3 var(--f-body); text-transform: none; letter-spacing: -.025em; overflow-wrap: anywhere; }
+html.helm #helmDeck .sector-index { margin-top: 8px; color: var(--deck-accent); font: 500 .625rem/1.4 var(--f-mono); letter-spacing: .06em; }
+html.helm #helmDeck .sector-note { color: #b0bdcd; font: 400 .875rem/1.7 var(--f-body); }
+html.helm #helmDeck .lib { gap: 5px; padding-bottom: 2px; }
+html.helm #helmDeck .lib i { width: 28px; height: 5px; border-radius: 3px; background: #3d414a; transform: none; }
+html.helm #helmDeck .lib i.on { background: #eab87d; }
+html.helm #helmDeck .lib span { margin-left: auto; color: #b6c0cf; font: 500 .75rem/1.4 var(--f-body); white-space: nowrap; }
+html.helm #helmDeck .sector-missions { gap: 10px; }
+html.helm #helmDeck .mrow {
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  min-width: 0;
+  min-height: 86px;
+  padding: 13px 12px;
+  gap: 11px;
+  border: 1px solid #2e394b;
+  border-radius: 10px;
+  background: #17202e;
+}
+html.helm #helmDeck .mrow:hover:not(:disabled) { border-color: #8d6e4b; background: #252624; }
+html.helm #helmDeck .mrow[aria-pressed="true"] { border-color: #be8c50; background: linear-gradient(110deg, #35291f, #262523); box-shadow: inset 3px 0 0 #e7ad69; }
+html.helm #helmDeck .mrow-num { color: #8f9db1; font: 500 1.125rem/1.2 var(--f-mono); }
+html.helm #helmDeck .mrow[aria-pressed="true"] .mrow-num { color: #f0bd7f; }
+html.helm #helmDeck .mrow-body { min-width: 0; }
+html.helm #helmDeck .mrow-body b { color: #e7edf6; font: 600 .875rem/1.45 var(--f-body); }
+html.helm #helmDeck .mrow-body small { margin-top: 5px; color: #a2afc2; font: 400 .75rem/1.5 var(--f-body); }
+html.helm #helmDeck .mrow-state { max-width: 61px; color: #9cabc0; font: 500 .5625rem/1.5 var(--f-body); letter-spacing: .04em; }
+html.helm #helmDeck .mrow-state.fresh { color: #f2c38a; }
+html.helm #helmDeck .mrow-state.solved { color: #95dfbb; }
+html.helm #helmDeck .btn-deploy { min-height: 54px; margin-top: auto; padding: 12px 16px; gap: 10px; border: 1px solid #f3c864; border-radius: 9px; background: #f3cd68; background-image: none; color: #211b14; font: 600 .9375rem/1.3 var(--f-body); text-transform: none; letter-spacing: 0; }
+html.helm #helmDeck .btn-deploy:hover:not(:disabled) { border-color: #ffdf91; background: #ffdc8b; }
+html.helm #helmDeck .btn-deploy small { margin-left: auto; max-width: 56%; color: #433824; font: 500 .6875rem/1.45 var(--f-body); opacity: 1; }
+html.helm #helmDeck .btn-deploy .ico { width: 18px; height: 18px; }
+
+/* Pin labels remain real buttons over the projected 3D world positions. */
+html.helm #helmDeck .pin { column-gap: 7px; row-gap: 4px; padding: 7px 9px; border: 1px solid #425368; border-radius: 8px; background: #0b1521ed; box-shadow: 0 3px 12px #0005; }
+html.helm #helmDeck .pin:hover:not(:disabled) { border-color: #87b9d9; background: #152a3b; }
+html.helm #helmDeck .pin[aria-pressed="true"] { border-color: #e5b477; background: #30271eeb; box-shadow: 0 0 0 2px #efbe7830, 0 5px 16px #0005; }
+html.helm #helmDeck .pin-num { color: #9edafa; font: 500 .8125rem/1.1 var(--f-mono); }
+html.helm #helmDeck .pin[aria-pressed="true"] .pin-num { color: #f3c78f; }
+html.helm #helmDeck .pin-name { color: #dbe8f6; font: 500 .6875rem/1.3 var(--f-body); }
+html.helm #helmDeck .pin-meter { gap: 3px; }
+html.helm #helmDeck .pin-meter i { width: 12px; height: 3px; border-radius: 2px; transform: none; background: #3f4d60; }
+html.helm #helmDeck .pin-meter i.on { background: #8bcde8; }
+html.helm #helmDeck .table-hint { left: 16px; right: auto; bottom: 21px; color: #92acc3; font: 400 .6875rem/1.5 var(--f-body); }
+html.helm #helmDeck .table-motion { right: 14px; bottom: 14px; min-height: 36px; padding: 8px 11px; border: 1px solid #3b536c; border-radius: 8px; background: #122132e8; color: #bad4ed; font: 500 .6875rem/1.4 var(--f-body); }
+html.helm #helmDeck .table-pins.static { inset: 0 0 50px; perspective: 900px; }
+html.helm #helmDeck .table-pins.static .pin { grid-template-columns: auto; justify-items: center; border-color: transparent; background: transparent; box-shadow: none; transform: translate(-50%, -50%); }
+html.helm #helmDeck .table-pins.static .pin-thumb { width: 80px; height: 80px; filter: drop-shadow(0 10px 9px #0008); transform: rotateX(-8deg); }
+html.helm #helmDeck .table-pins.static .pin[aria-pressed="true"] { border-color: #c28d52; background: #201b1699; }
+
+/* Existing training content follows the same readable card hierarchy. */
+html.helm #helmDeck .deck-lower { margin-top: 24px; }
+html.helm #helmDeck .learn-path { padding: 24px; border: 1px solid var(--deck-line); border-radius: 14px; background: var(--deck-surface); box-shadow: none; }
+html.helm #helmDeck .learn-path h2 { color: #e8eaf1; font: 600 1.1875rem/1.4 var(--f-body); text-transform: none; letter-spacing: -.02em; }
+html.helm #helmDeck .learn-path > p { margin-top: 10px; color: var(--deck-muted); font: 400 .875rem/1.7 var(--f-body); }
+html.helm #helmDeck .learn-path-cards { margin-top: 20px; gap: 12px; }
+html.helm #helmDeck .learn-path-cards button { min-height: 76px; padding: 16px; gap: 8px; border: 1px solid #354254; border-radius: 9px; background: #192332; }
+html.helm #helmDeck .learn-path-cards button strong { color: #e7ecf6; font: 600 .875rem/1.4 var(--f-body); text-transform: none; letter-spacing: 0; }
+html.helm #helmDeck .learn-path-evidence { color: #a3b3c7; font: 400 .75rem/1.5 var(--f-body); }
+html.helm #helmDeck .deck-note { padding: 20px; border: 1px solid var(--deck-line); border-radius: 12px; background: var(--deck-surface); color: var(--deck-muted); font: 400 .8125rem/1.7 var(--f-body); box-shadow: none; }
+
+@media (max-width: 1180px) {
+  html.helm #helmDeck .deck-stage { grid-template-columns: minmax(0, 1fr); }
+  html.helm #helmDeck .table-wrap { grid-column: 1; grid-row: 1; height: clamp(440px, 62vw, 600px); min-height: 0; }
+  html.helm #helmDeck .sector { grid-column: 1; grid-row: 2; }
+  html.helm #helmDeck .head-title { flex-basis: 250px; }
+  html.helm #helmDeck .head-cells { flex: 1 1 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 899px) {
+  html.helm #helmDeck { padding: 24px 20px 36px; }
+  html.helm #helmDeck .deck-head .head-cells { display: none; }
+  html.helm #helmDeck .table-wrap { height: clamp(340px, 70vw, 540px); aspect-ratio: auto; }
+  html.helm #helmDeck .pin { padding: 6px 8px; }
+  html.helm #helmDeck .pin-name,
+  html.helm #helmDeck .pin-meter { display: none; }
+  html.helm #helmDeck .pin-num { font-size: .75rem; }
+  html.helm #helmDeck .table-hint { display: none; }
+  html.helm #helmDeck .sector { padding: 22px; }
+}
+@media (max-width: 600px) {
+  html.helm #helmDeck { padding: 20px 16px 32px; }
+  html.helm #helmDeck .deck-head { gap: 12px; padding-bottom: 22px; margin-bottom: 20px; }
+  html.helm #helmDeck .head-cap { flex-basis: 38px; min-height: 38px; border-radius: 10px; background-size: 23px; }
+  html.helm #helmDeck .head-title { flex-basis: calc(100% - 60px); }
+  html.helm #helmDeck .head-title h1 { font-size: 1.5rem; }
+  html.helm #helmDeck .head-title p { font-size: .8125rem; }
+  html.helm #helmDeck .account-strip { padding: 13px 14px; gap: 10px; font-size: .75rem; }
+  html.helm #helmDeck .account-strip > span { flex-basis: 100%; }
+  html.helm #helmDeck .account-strip button { min-height: 38px; }
+  html.helm #helmDeck .table-wrap { height: clamp(300px, 85vw, 420px); border-radius: 13px; }
+  html.helm #helmDeck #warTable { border-radius: 12px; }
+  html.helm #helmDeck .deck-stage { gap: 16px; }
+  html.helm #helmDeck .sector { padding: 20px 16px; border-radius: 13px; gap: 16px; }
+  html.helm #helmDeck #sectorName { font-size: 1.25rem; }
+  html.helm #helmDeck .sector-thumb { width: 50px; height: 50px; background-size: 48px; }
+  html.helm #helmDeck .mrow { grid-template-columns: 26px minmax(0, 1fr) auto; padding: 12px; gap: 10px; }
+  html.helm #helmDeck .mrow-body b { font-size: .8125rem; }
+  html.helm #helmDeck .mrow-body small { font-size: .6875rem; }
+  html.helm #helmDeck .mrow-state { max-width: 57px; font-size: .5625rem; }
+  html.helm #helmDeck .btn-deploy { padding: 12px 14px; font-size: .875rem; }
+  html.helm #helmDeck .btn-deploy small { font-size: .625rem; }
+  html.helm #helmDeck .table-motion { min-height: 34px; padding: 7px 10px; font-size: .625rem; }
+  html.helm #helmDeck .table-pins.static .pin-thumb { width: 64px; height: 64px; }
+  html.helm #helmDeck .learn-path { padding: 20px 16px; }
+  html.helm #helmDeck .learn-path > p { font-size: .8125rem; }
+}

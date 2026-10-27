@@ -1,9 +1,11 @@
 const {chromium}=require('playwright'),assert=require('node:assert/strict');
 (async()=>{
+ const path=require('node:path'),{pathToFileURL}=require('node:url');
  const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
  const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto('file:///C:/Users/Admin/Desktop/caja_game/codebreakers_tripleA_cinematic_polish_v3.html');await page.waitForTimeout(3000);
+ await page.goto(pathToFileURL(path.resolve('codebreakers_tripleA_cinematic_polish_v3.html')).href);
+ await page.waitForFunction(()=>window.CBBoot?.active===false&&document.getElementById('bootScreen')?.hidden);
  assert.equal(await page.locator('#learningPath').count(),1,'Guided learning path is present');
  await page.locator('[data-learn-mission="0"]').click();
  assert.equal(await page.locator('#checkpointOverlay').isVisible(),false,'First lesson does not open a blocking quiz');
@@ -29,7 +31,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
  const fs=require('fs'),report=JSON.parse(fs.readFileSync('.qa/learning-report.json','utf8'));assert.equal(report.learning.missions['0'].transfer,1);
  await page.locator('#importReports').setInputFiles('.qa/learning-report.json');await page.waitForTimeout(500);
  assert.match(await page.locator('#learningTeacher').textContent(),/Learning Test/);
- await page.reload();await page.waitForTimeout(1500);
+ await page.reload();await page.waitForFunction(()=>window.CBBoot?.active===false&&document.getElementById('bootScreen')?.hidden);
  assert.equal(await page.evaluate(()=>CBLearning.exportEvidence().missions['0'].transfer),1,'Learning evidence persists after reload');
  await page.locator('.rail-item[data-go="teacher"]').click();
  const legacy={...report,student:'Legacy learner'};delete legacy.learning;

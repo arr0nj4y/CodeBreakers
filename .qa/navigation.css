@@ -1,0 +1,153 @@
+/* One navigation system. The existing screen accent supplies its page color:
+   Deck / missions: amber; Arcade: lilac; Combat: coral; Teacher: blue. */
+html.helm body {
+  --nav-accent: var(--area);
+  --nav-surface: color-mix(in srgb, var(--nav-accent) 6%, #090e16);
+  --nav-brand: color-mix(in srgb, var(--nav-accent) 11%, #0b121c);
+  --nav-line: color-mix(in srgb, var(--nav-accent) 22%, #1b2635);
+  --nav-selected: color-mix(in srgb, var(--nav-accent) 17%, #0d1520);
+  --nav-selected-line: color-mix(in srgb, var(--nav-accent) 42%, #1c2b3b);
+  --nav-selected-text: color-mix(in srgb, var(--nav-accent) 40%, #f3f6ff);
+  --nav-hover: color-mix(in srgb, var(--nav-accent) 10%, #101a27);
+}
+html.helm #helmRail {
+  padding: 0 0 16px;
+  border-right: 1px solid var(--nav-line);
+  background: var(--nav-surface);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: background-color .22s ease, border-color .22s ease;
+}
+html.helm #helmRail::after { content: none; }
+html.helm #helmRail .rail-brand {
+  flex-shrink: 0;
+  min-height: 104px;
+  margin-right: 0;
+  padding: 22px 18px;
+  gap: 10px;
+  border-bottom: 1px solid var(--nav-line);
+  border-radius: 0;
+  background: var(--nav-brand);
+  color: var(--nav-selected-text);
+  transition: background-color .22s ease, border-color .22s ease, color .22s ease;
+}
+html.helm #helmRail .rail-brand > div { min-width: 0; }
+html.helm #helmRail .rail-logo {
+  width: 42px;
+  height: 42px;
+  padding: 4px;
+  border: 1px solid var(--nav-selected-line);
+  background: #0b121c;
+}
+html.helm #helmRail .rail-word { font-size: 1.25rem; }
+html.helm #helmRail .rail-pilot { color: #a0b0c5; font-size: .75rem; font-weight: 400; }
+html.helm #helmRail .rail-nav { flex-shrink: 0; padding: 0 14px; margin-top: 26px; gap: 8px; }
+html.helm #helmRail .rail-item {
+  position: relative;
+  width: 100%;
+  min-height: 46px;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: #a6b5c9;
+  font: 500 .875rem/1 var(--f-body);
+  letter-spacing: .01em;
+  text-transform: none;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+html.helm #helmRail .rail-item .ico { width: 20px; height: 20px; color: #92a3b9; }
+html.helm #helmRail .rail-item:hover:not(:disabled) { background: var(--nav-hover); border-color: var(--nav-line); color: #edf3fc; }
+html.helm #helmRail .rail-item[aria-current="page"],
+html.helm #helmRail .rail-item[aria-current="page"]:hover:not(:disabled) {
+  background: var(--nav-selected);
+  border-color: var(--nav-selected-line);
+  color: var(--nav-selected-text);
+}
+html.helm #helmRail .rail-item[aria-current="page"]::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 13px;
+  bottom: 13px;
+  width: 3px;
+  border-radius: 4px;
+  background: var(--nav-accent);
+}
+html.helm #helmRail .rail-item[aria-current="page"] .ico { color: var(--nav-accent); }
+html.helm #helmRail .rail-utility {
+  flex-shrink: 0;
+  margin-top: auto;
+  margin-left: 0;
+  padding: 18px 14px 0;
+  border-top: 1px solid var(--nav-line);
+}
+html.helm #helmRail .rail-tool,
+html.helm #railMore .rail-tool {
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: transparent;
+  color: #a6b5c9;
+  font: 500 .8125rem/1 var(--f-body);
+}
+html.helm #helmRail .rail-tool:hover:not(:disabled),
+html.helm #railMore .rail-tool:hover:not(:disabled) { background: var(--nav-hover); color: #edf3fc; }
+html.helm #helmRail .rail-tool[aria-pressed="true"] .ico,
+html.helm #railMore .rail-tool[aria-pressed="true"] .ico { color: var(--nav-accent); }
+html.helm #helmRail .rail-tool .state,
+html.helm #railMore .rail-tool .state { font-size: .625rem; letter-spacing: .07em; }
+html.helm #helmRail .rail-tool[aria-pressed="true"] .state,
+html.helm #railMore .rail-tool[aria-pressed="true"] .state { color: var(--nav-accent); }
+html.helm #helmRail button:focus-visible,
+html.helm #railMore button:focus-visible { outline-color: var(--nav-accent) !important; }
+html.helm #railMore { border: 1px solid var(--nav-selected-line); border-radius: 12px; background: var(--nav-surface); box-shadow: 0 18px 50px #0006; }
+
+/* Keep the same compact icon rail on every page at tablet/laptop widths. */
+@media (min-width: 900px) and (max-width: 1279px) {
+  html.helm #helmRail .rail-brand { justify-content: center; padding: 22px 8px; }
+  html.helm #helmRail .rail-brand > div { display: none; }
+  html.helm #helmRail .rail-nav { padding: 0 10px; }
+  html.helm #helmRail .rail-item,
+  html.helm #helmRail .rail-tool { justify-content: center; padding: 0; }
+  html.helm #helmRail .rail-utility { padding: 16px 10px 0; }
+  html.helm #helmRail .rail-tool .state { display: none; }
+}
+
+/* The mobile bar and its More menu use the same accent and rounded geometry. */
+@media (max-width: 899px) {
+  html.helm #helmRail { height: var(--bar-h); padding: 0; border-right: 0; border-top: 1px solid var(--nav-selected-line); overflow: visible; }
+  html.helm #helmRail .rail-brand,
+  html.helm #helmRail .rail-utility { display: none; }
+  html.helm #helmRail .rail-nav { margin: 0; padding: 6px 8px; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+  html.helm #helmRail .rail-nav > li { min-width: 0; }
+  html.helm #helmRail .rail-item,
+  html.helm #helmRail .rail-more-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    padding: 5px 2px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: #a6b5c9;
+    font: 500 .625rem/1 var(--f-body);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  html.helm #helmRail .rail-item .ico,
+  html.helm #helmRail .rail-more-btn .ico { width: 20px; height: 20px; }
+  html.helm #helmRail .rail-item[aria-current="page"]::before { left: 16px; right: 16px; top: -1px; bottom: auto; width: auto; height: 2px; }
+  html.helm body:has(#railMore:not([hidden])) #helmRail .rail-more-btn { background: var(--nav-selected); border-color: var(--nav-selected-line); color: var(--nav-selected-text); }
+  html.helm #helmRail .rail-more-btn:hover:not(:disabled) { background: var(--nav-hover); color: #edf3fc; }
+  html.helm #railMore { padding: 8px; min-width: 220px; }
+  html.helm #railMore .rail-tool { min-height: 44px; }
+}

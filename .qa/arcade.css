@@ -1,0 +1,284 @@
+/* Arcade presentation only: existing modes, copy, progress and rewards. */
+html.helm #arcadeScreen {
+  --arc-surface: #111520;
+  --arc-raised: #191e2d;
+  --arc-line: #30364b;
+  --arc-ink: #f0eefb;
+  --arc-muted: #b1b6ca;
+  --arc-accent: #d1b4f4;
+  background: #0a0c14 !important;
+}
+html.helm #arcadeScreen > .screen-wrap { max-width: 1480px; padding: 32px clamp(20px, 3vw, 44px) 48px; }
+html.helm #arcadeScreen .helm-head { align-items: center; gap: 18px; padding: 0 0 26px; margin-bottom: 26px; border-color: var(--arc-line); }
+html.helm #arcadeScreen .helm-head::after { width: 64px; height: 2px; background: var(--arc-accent); }
+html.helm #arcadeScreen .head-cap {
+  flex: 0 0 48px;
+  min-height: 48px;
+  align-self: flex-start;
+  border: 1px solid #5c4876;
+  border-radius: 13px;
+  background: #251d36 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d1b4f4' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10c3 0 5 10 3 11-2 1-4-3-5-3H9c-1 0-3 4-5 3C2 17 4 7 7 7ZM7 10v4m-2-2h4m7-1h.01m2 2h.01'/%3E%3C/svg%3E") center/26px no-repeat;
+}
+html.helm #arcadeScreen .head-title { flex: 1 1 320px; }
+html.helm #arcadeScreen .head-title h1 { color: var(--arc-ink); font: 600 clamp(1.625rem, 2.5vw, 2.125rem)/1.2 var(--f-body); text-transform: none; letter-spacing: -.035em; }
+html.helm #arcadeScreen .head-title p { max-width: 64ch; margin-top: 10px; color: var(--arc-muted); font: 400 .875rem/1.65 var(--f-body); }
+html.helm #arcadeScreen .head-cells { display: grid; grid-template-columns: 1.2fr 1.15fr .85fr; gap: 9px; min-width: 0; }
+html.helm #arcadeScreen .head-cells .cell {
+  min-width: 106px;
+  min-height: 80px;
+  padding: 14px 16px;
+  gap: 10px;
+  border: 1px solid #383149;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #211d30, #141722);
+  box-shadow: inset 0 1px 0 #e5cdff07;
+}
+html.helm #arcadeScreen .head-cells .cell span { color: #b9b0ca; font: 500 .625rem/1.5 var(--f-body); letter-spacing: .07em; }
+html.helm #arcadeScreen .head-cells .cell b { color: #dac3fa; font: 600 1.375rem/1 var(--f-mono); letter-spacing: -.04em; white-space: nowrap; }
+html.helm #arcadeScreen .head-cells .cell b strong { font: inherit; }
+html.helm #arcadeScreen .head-cells .cell:last-child b { color: #f3d27d; }
+
+/* Search and progress filters form one compact control surface. */
+html.helm #arcadeScreen .cb-arcade-tools {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  margin: 0 0 28px;
+  border: 1px solid var(--arc-line);
+  border-radius: 12px;
+  background: var(--arc-surface);
+}
+html.helm #arcadeScreen .cb-arcade-search { flex: 1 1 260px; max-width: none; min-width: 0; }
+html.helm #arcadeScreen .cb-arcade-search > span { color: #a798bd; }
+html.helm #arcadeScreen #cbArcadeSearch { min-height: 44px; padding: 10px 14px 10px 42px; border: 1px solid #3b3c52; border-radius: 8px; background: #0c101b; color: var(--arc-ink); font: 400 .875rem/1.5 var(--f-body); }
+html.helm #arcadeScreen #cbArcadeSearch::placeholder { color: #989eb5; }
+html.helm #arcadeScreen #cbArcadeSearch:hover { border-color: #78688f; }
+html.helm #arcadeScreen #cbArcadeSearch:focus-visible { border-color: var(--arc-accent); outline-color: var(--arc-accent) !important; }
+html.helm #arcadeScreen .cb-arcade-filters { gap: 4px; padding: 4px; border: 1px solid #2f3043; border-radius: 9px; background: #0b0e17; }
+html.helm #arcadeScreen .cb-arcade-filters button { min-height: 36px; padding: 8px 13px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: #b9b7c9; font: 500 .8125rem/1.35 var(--f-body); white-space: nowrap; }
+html.helm #arcadeScreen .cb-arcade-filters button:hover:not(:disabled) { background: #252035; color: #eee5ff; }
+html.helm #arcadeScreen .cb-arcade-filters button[aria-pressed="true"] { border-color: #67537f; background: #3a2b50; color: #f0dfff; box-shadow: inset 0 1px 0 #e5cdff0a; }
+html.helm #arcadeScreen .cb-result-count { margin-left: auto; padding: 0 4px; color: #a4a4bb; font: 400 .6875rem/1.5 var(--f-mono); white-space: nowrap; }
+
+/* Real progress and existing Blender artwork become collectible mode cards. */
+html.helm #arcadeScreen .arc-catalog:not([hidden]) {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  column-gap: 18px !important;
+  row-gap: 16px !important;
+  padding: 0 !important;
+  background: none;
+  box-shadow: none;
+  clip-path: none;
+}
+html.helm #arcadeScreen .arc-catalog-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+  color: #d0c4e2;
+  font: 600 .875rem/1.5 var(--f-body);
+  text-transform: none;
+  letter-spacing: .015em;
+}
+html.helm #arcadeScreen .arc-catalog-divider:first-of-type { margin-top: 0; }
+html.helm #arcadeScreen .arc-catalog-divider::before { content: ''; flex: 0 0 6px; height: 6px; border-radius: 2px; background: var(--arc-accent); transform: rotate(45deg); }
+html.helm #arcadeScreen .arc-catalog-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, #484058, #292b3a); }
+html.helm #arcadeScreen .arc-mode-card {
+  grid-template-columns: 66px minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  column-gap: 18px;
+  row-gap: 6px;
+  align-items: start;
+  min-width: 0;
+  min-height: 170px !important;
+  padding: 22px !important;
+  border: 1px solid #34384c !important;
+  border-radius: 13px !important;
+  background: radial-gradient(ellipse at 0 0, #b58ae30a, transparent 65%), linear-gradient(130deg, #161b28, #11151f) !important;
+  box-shadow: 0 5px 18px #0002 !important;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  overflow: visible;
+}
+html.helm #arcadeScreen .arc-mode-card:hover:not(:disabled) { border-color: #9b7dbb !important; background: linear-gradient(130deg, #201f31, #161a28) !important; box-shadow: 0 10px 30px #0004 !important; transform: translateY(-2px) !important; }
+html.helm #arcadeScreen .arc-mode-card:focus-visible { outline: 2px solid var(--arc-accent) !important; outline-offset: 4px !important; }
+html.helm #arcadeScreen .arc-mode-card .helm-mode-art {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  width: 66px;
+  height: 66px;
+  align-self: start;
+  border: 1px solid color-mix(in srgb, var(--ac, var(--lilac)) 25%, #333a4b);
+  border-radius: 15px;
+  background: var(--art) center/62px no-repeat, radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--ac, var(--lilac)) 14%, #151b29), #0c111b);
+}
+html.helm #arcadeScreen .arc-mode-card .celestial-title {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  color: #f0eef9 !important;
+  font: 600 1.125rem/1.35 var(--f-body) !important;
+  text-transform: none;
+  letter-spacing: -.015em;
+}
+html.helm #arcadeScreen .arc-mode-card .celestial-description { grid-column: 2; grid-row: 2; color: #b2b7cc !important; font: 400 .875rem/1.65 var(--f-body) !important; overflow-wrap: anywhere; }
+html.helm #arcadeScreen .arc-mode-card:hover .celestial-title { color: #e1c6ff !important; }
+html.helm #arcadeScreen .helm-mode-count {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-width: 0;
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid #2c3244;
+}
+html.helm #arcadeScreen .helm-mode-count b { color: #c9bedc; font: 500 .8125rem/1.2 var(--f-mono); letter-spacing: -.02em; }
+html.helm #arcadeScreen .helm-mode-count > span { flex: 0 1 120px; width: 120px; gap: 5px; }
+html.helm #arcadeScreen .helm-mode-count i { flex: 1; width: auto; height: 5px; border-radius: 3px; background: #353b51; transform: none; }
+html.helm #arcadeScreen .helm-mode-count i.on { background: #cfadf5; box-shadow: 0 0 9px #cfadf526; }
+html.helm #arcadeScreen .arc-mode-card.extra-arcade-link .celestial-progress { grid-column: 1 / -1; grid-row: 3; justify-content: flex-end; margin-top: 12px !important; padding-top: 14px; border-top: 1px solid #2c3244; }
+html.helm #arcadeScreen .arc-mode-card .celestial-status { color: #ccb3eb !important; font: 600 .6875rem/1.4 var(--f-body) !important; letter-spacing: .06em; }
+html.helm #arcadeScreen .cb-empty-state { padding: 36px 24px; border: 1px dashed #5c4c72; border-radius: 12px; background: #171423; color: var(--arc-muted); font-size: .875rem; line-height: 1.65; }
+html.helm #arcadeScreen .cb-empty-state h3 { color: #e0c9fb; font: 600 1.125rem/1.4 var(--f-body); }
+
+/* The same visual language continues into the challenge and its real result. */
+html.helm #arcadeScreen .arc-play { gap: 22px; }
+html.helm #arcadeScreen .arc-breadcrumb { flex-wrap: wrap; gap: 14px; }
+html.helm #arcadeScreen .arc-breadcrumb button { min-height: 40px; padding: 10px 14px; border: 1px solid #43405a; border-radius: 8px; background: #191827; color: #dbcbef; font-size: .8125rem; }
+html.helm #arcadeScreen #arcadeTrail { color: #a5a0ba; font: 500 .6875rem/1.5 var(--f-mono); letter-spacing: .05em; }
+html.helm #arcadeScreen .arc-mission-head { gap: 20px; padding-bottom: 22px; border-color: var(--arc-line); }
+html.helm #arcadeScreen .arc-mission-head > div:first-child { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: 6px 18px; min-width: 0; }
+html.helm #arcadeScreen .arc-mission-head .helm-mode-art { grid-column: 1; grid-row: 1 / 3; width: 68px; height: 68px; border: 1px solid #3f3c55; border-radius: 14px; background-color: #171c2a; background-size: 64px; }
+html.helm #arcadeScreen #arcadeTitle { grid-column: 2; grid-row: 1; align-self: end; color: var(--arc-ink); font: 600 1.625rem/1.3 var(--f-body); text-transform: none; letter-spacing: -.025em; }
+html.helm #arcadeScreen #arcadeIntro { grid-column: 2; grid-row: 2; margin: 0; color: var(--arc-muted); font: 400 .875rem/1.6 var(--f-body); }
+html.helm #arcadeScreen .arc-mission-meta { flex-shrink: 0; gap: 7px; }
+html.helm #arcadeScreen .arc-mission-meta span { padding: 9px 12px; border: 1px solid #40394f; border-radius: 7px; background: #1d192a; color: #c6b4df; font: 500 .6875rem/1.3 var(--f-mono); box-shadow: none; }
+html.helm #arcadeScreen .arc-stage-nav { gap: 8px; }
+html.helm #arcadeScreen .arc-stage-nav button { min-height: 40px; padding: 9px 14px; border: 1px solid #3b394f; border-radius: 8px; background: #141824; color: #b9b7cc; font: 500 .8125rem/1.4 var(--f-body); white-space: normal; }
+html.helm #arcadeScreen .arc-stage-nav button.selected { border-color: #8b6ba9; background: #352846; color: #ead6ff; }
+html.helm #arcadeScreen .arc-stage-nav button.solved { border-color: #477564; color: #b4ead0; }
+html.helm #arcadeScreen .arc-workspace:not([hidden]) { grid-template-columns: minmax(0, 1.65fr) minmax(260px, .85fr) !important; gap: 20px !important; }
+html.helm #arcadeScreen .arc-work-main,
+html.helm #arcadeScreen .arc-aside { min-width: 0; padding: 26px !important; border: 1px solid var(--arc-line) !important; border-radius: 14px !important; background: var(--arc-surface) !important; box-shadow: 0 8px 24px #0002 !important; }
+html.helm #arcadeScreen .arc-aside { position: sticky; top: 24px; }
+html.helm #arcadeScreen .arc-brief { margin-bottom: 24px; padding-bottom: 22px; border-color: var(--arc-line); }
+html.helm #arcadeScreen .brief-title { margin-bottom: 20px; }
+html.helm #arcadeScreen .brief-title #arcadeTask { font: 600 1.375rem/1.35 var(--f-body); text-transform: none; letter-spacing: -.02em; }
+html.helm #arcadeScreen .brief-grid { grid-template-columns: 100px minmax(0, 1fr); gap: 18px 20px; }
+html.helm #arcadeScreen .brief-grid dt { color: #c2aadf; font: 600 .75rem/1.6 var(--f-body); letter-spacing: .02em; }
+html.helm #arcadeScreen .brief-grid dd { min-width: 0; color: #b8bed1; font: 400 .875rem/1.75 var(--f-body); }
+html.helm #arcadeScreen .brief-goal { padding: 12px 14px; border-left: 2px solid #b18cd6; border-radius: 0 7px 7px 0; background: #211c30; }
+html.helm #arcadeScreen .brief-goal #arcadeTaskDesc { color: #e8d7ff; font: 500 .9375rem/1.65 var(--f-body); }
+html.helm #arcadeScreen .brief-steps { gap: 6px; }
+html.helm #arcadeScreen .brief-steps li::marker { color: #b99bdb; }
+html.helm #arcadeScreen .brief-hint { margin-top: 20px; border: 1px solid #383447; border-radius: 8px; background: #1a1927; }
+html.helm #arcadeScreen .brief-hint > summary { min-height: 42px; padding: 11px 14px; color: #d7c5ed; font-size: .8125rem; }
+html.helm #arcadeScreen .arc-section-label { margin-bottom: 12px; color: #aba3c1 !important; font: 500 .625rem/1.6 var(--f-body) !important; letter-spacing: .08em !important; }
+html.helm #arcadeScreen .arc-editor { width: 100%; max-width: 100%; padding: 18px !important; border: 1px solid #3b455d !important; border-radius: 9px !important; background: #090e18 !important; font: 400 .875rem/1.8 var(--f-mono) !important; resize: vertical; }
+html.helm #arcadeScreen .arc-codeblock,
+html.helm #arcadeScreen .arc-output { max-width: 100%; padding: 16px; border-color: #313c51 !important; border-radius: 9px !important; background: #0a101c !important; font: 400 .8125rem/1.8 var(--f-mono) !important; overflow-x: auto; }
+html.helm #arcadeScreen .arc-tip { margin-top: 12px; color: #9aabc1 !important; font: 400 .75rem/1.7 var(--f-body); }
+html.helm #arcadeScreen .arc-option { min-width: 0; padding: 13px 16px; border-color: #363c52 !important; border-radius: 8px !important; background: #191d2b !important; font: 500 .875rem/1.6 var(--f-body); white-space: normal; }
+html.helm #arcadeScreen .arc-field { min-width: 0; color: #b5acc8 !important; font: 500 .75rem/1.6 var(--f-body); }
+html.helm #arcadeScreen .arc-field input,
+html.helm #arcadeScreen .arc-field select,
+html.helm #arcadeScreen .arc-field textarea { min-width: 0; max-width: 100%; min-height: 44px; border-color: #46415a !important; border-radius: 8px !important; background-color: #0d1220 !important; font-size: .875rem; }
+html.helm #arcadeScreen .arc-aside h3,
+html.helm #arcadeScreen .arc-aside h4 { margin-bottom: 12px; color: #dcc2f7; font: 600 1rem/1.4 var(--f-body); letter-spacing: .02em; }
+html.helm #arcadeScreen #arcadeLearn { color: #b5bbcf; font: 400 .875rem/1.75 var(--f-body); }
+html.helm #arcadeScreen .arc-aside-info { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--arc-line); color: #aaa5be; font: 500 .625rem/1.5 var(--f-body); letter-spacing: .07em; }
+html.helm #arcadeScreen .arc-aside-info strong { color: #d7bbf6; font: 500 1rem/1.3 var(--f-mono); }
+html.helm #arcadeScreen .arc-meter { height: 6px !important; border-radius: 4px !important; background: #363149 !important; }
+html.helm #arcadeScreen .arc-meter i { border-radius: 4px; background: linear-gradient(90deg, #9164bd, #d5b3f5) !important; }
+html.helm #arcadeScreen .arc-hint { border-color: #42394f !important; border-radius: 7px !important; background: #1c1929 !important; color: #bcb0d2 !important; font-size: .8125rem; line-height: 1.7; }
+html.helm #arcadeScreen .arc-action-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+html.helm #arcadeScreen .arc-action-row button { min-height: 44px; padding: 11px 16px; border-radius: 8px; font: 600 .8125rem/1.4 var(--f-body); }
+html.helm #arcadeScreen .arc-action-row .primary { background: #f3cd61; border-color: #f3cd61; color: #19151d; }
+html.helm #arcadeScreen #arcadeNext { background: #302542; border-color: #8d6ba9; color: #e9d1ff; }
+html.helm #arcadeScreen .arc-feedback { margin-top: 20px; padding: 16px 18px; border: 1px solid #423b55 !important; border-left: 3px solid #9c7ac4 !important; border-radius: 9px !important; background: #1b1928 !important; box-shadow: none; color: #c6bdd6 !important; font: 400 .875rem/1.8 var(--f-body) !important; overflow-wrap: anywhere; }
+html.helm #arcadeScreen .arc-feedback.success { border-color: #395d50 !important; border-left-color: #85dfb5 !important; background: #14281f !important; color: #c4f3dc !important; animation: arcade-result-reveal .3s ease-out; }
+html.helm #arcadeScreen .arc-feedback.error { border-color: #69424d !important; border-left-color: #f49eab !important; background: #2c1c26 !important; color: #ffced6 !important; }
+html.helm #arcadeScreen .arc-feedback > .ico { margin-right: 6px; color: inherit; }
+html.helm #arcadeScreen .arc-data-table { width: 100%; font: 400 .8125rem/1.6 var(--f-body); }
+html.helm #arcadeScreen .arc-data-table th { padding: 12px; background: #1b1d2e; color: #cab6e3; font-size: .6875rem; letter-spacing: .04em; }
+html.helm #arcadeScreen .arc-data-table td { padding: 12px; color: #c1c5d9; border-color: var(--arc-line); }
+html.helm #arcadeScreen .arc-circuit,
+html.helm #arcadeScreen .arc-grid-list,
+html.helm #arcadeScreen .arc-rule { min-width: 0; max-width: 100%; }
+html.helm #arcadeScreen .arc-circuit-nodes { display: grid; grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr) 18px minmax(0, 1fr); align-items: center; gap: 6px; min-width: 0; }
+html.helm #arcadeScreen .arc-circuit-nodes span { min-width: 0; padding: 12px 6px; white-space: normal; overflow-wrap: anywhere; text-align: center; font-size: .75rem; }
+html.helm #arcadeScreen .arc-circuit-nodes b { text-align: center; }
+html.helm #arcadeScreen .arc-truth { grid-template-columns: repeat(4, minmax(0, 1fr)); min-width: 0; }
+html.helm #arcadeScreen .arc-truth > span { min-width: 0; padding: 10px 4px; overflow-wrap: anywhere; white-space: normal; font-size: .75rem; }
+html.helm #arcadeScreen .arc-rule { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 40px; gap: 12px; padding: 14px; border: 1px solid #383b51; border-radius: 9px; background: #151a28; }
+html.helm #arcadeScreen .arc-rule select { width: 100%; }
+@keyframes arcade-result-reveal { from { opacity: .65; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1180px) {
+  html.helm #arcadeScreen .head-title { flex-basis: 260px; }
+  html.helm #arcadeScreen .head-cells { flex: 1 1 100%; }
+  html.helm #arcadeScreen .arc-workspace:not([hidden]) { grid-template-columns: minmax(0, 1fr) !important; }
+  html.helm #arcadeScreen .arc-aside { position: static; }
+  html.helm #arcadeScreen .cb-arcade-search { flex-basis: 100%; }
+}
+@media (max-width: 899px) {
+  html.helm #arcadeScreen > .screen-wrap { padding: 24px 20px 36px; }
+  html.helm #arcadeScreen .head-cells { width: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  html.helm #arcadeScreen .head-cells .cell { min-width: 0; }
+  html.helm #arcadeScreen .arc-catalog:not([hidden]) { column-gap: 14px !important; row-gap: 14px !important; }
+  html.helm #arcadeScreen .arc-mode-card { padding: 18px !important; column-gap: 14px; }
+}
+@media (max-width: 600px) {
+  html.helm #arcadeScreen > .screen-wrap { padding: 20px 16px 32px; }
+  html.helm #arcadeScreen .helm-head { gap: 14px 12px; padding-bottom: 22px; margin-bottom: 22px; }
+  html.helm #arcadeScreen .head-cap { flex-basis: 38px; min-height: 38px; border-radius: 10px; background-size: 22px; }
+  html.helm #arcadeScreen .head-title { flex-basis: calc(100% - 60px); }
+  html.helm #arcadeScreen .head-title h1 { font-size: 1.5rem; }
+  html.helm #arcadeScreen .head-title p { font-size: .8125rem; }
+  html.helm #arcadeScreen .head-cells { gap: 7px; }
+  html.helm #arcadeScreen .head-cells .cell { min-height: 78px; padding: 12px 10px; gap: 10px; border-radius: 9px; }
+  html.helm #arcadeScreen .head-cells .cell span { font-size: .5625rem; letter-spacing: .04em; }
+  html.helm #arcadeScreen .head-cells .cell b { font-size: 1.0625rem; }
+  html.helm #arcadeScreen .cb-arcade-tools { padding: 12px; gap: 12px; margin-bottom: 22px; }
+  html.helm #arcadeScreen .cb-arcade-filters { flex: 1 1 100%; }
+  html.helm #arcadeScreen .cb-arcade-filters button { flex: 1; min-height: 40px; padding: 8px 6px; font-size: .75rem; }
+  html.helm #arcadeScreen .cb-result-count { margin-left: auto; font-size: .625rem; }
+  html.helm #arcadeScreen .arc-catalog:not([hidden]) { grid-template-columns: minmax(0, 1fr) !important; row-gap: 14px !important; }
+  html.helm #arcadeScreen .arc-catalog-divider { margin-top: 12px; font-size: .8125rem; }
+  html.helm #arcadeScreen .arc-mode-card { grid-template-columns: 56px minmax(0, 1fr); min-height: 154px !important; padding: 18px 16px !important; column-gap: 14px; }
+  html.helm #arcadeScreen .arc-mode-card .helm-mode-art { width: 56px; height: 56px; border-radius: 12px; background-size: 52px, auto; }
+  html.helm #arcadeScreen .arc-mode-card .celestial-title { font-size: 1rem !important; }
+  html.helm #arcadeScreen .arc-mode-card .celestial-description { font-size: .8125rem !important; line-height: 1.65 !important; }
+  html.helm #arcadeScreen .helm-mode-count { margin-top: 10px; padding-top: 12px; }
+  html.helm #arcadeScreen .helm-mode-count > span { flex-basis: 100px; width: 100px; }
+  html.helm #arcadeScreen .arc-mission-head { flex-direction: column; align-items: stretch; gap: 16px; }
+  html.helm #arcadeScreen .arc-mission-head > div:first-child { grid-template-columns: 56px minmax(0, 1fr); column-gap: 14px; }
+  html.helm #arcadeScreen .arc-mission-head .helm-mode-art { width: 56px; height: 56px; background-size: 52px; border-radius: 12px; }
+  html.helm #arcadeScreen #arcadeTitle { font-size: 1.375rem; }
+  html.helm #arcadeScreen #arcadeIntro { font-size: .8125rem; }
+  html.helm #arcadeScreen .arc-mission-meta { align-self: flex-start; }
+  html.helm #arcadeScreen .arc-stage-nav button { flex: 1 1 130px; padding: 9px 10px; font-size: .75rem; }
+  html.helm #arcadeScreen .arc-work-main,
+  html.helm #arcadeScreen .arc-aside { padding: 20px 16px !important; border-radius: 12px !important; }
+  html.helm #arcadeScreen .brief-title #arcadeTask { font-size: 1.25rem; }
+  html.helm #arcadeScreen .brief-grid { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  html.helm #arcadeScreen .brief-grid dd { margin-bottom: 12px; font-size: .8125rem; }
+  html.helm #arcadeScreen .brief-goal #arcadeTaskDesc { font-size: .875rem; }
+  html.helm #arcadeScreen .arc-editor { padding: 14px !important; font-size: .8125rem !important; }
+  html.helm #arcadeScreen .arc-feedback { padding: 14px; font-size: .8125rem !important; }
+  html.helm #arcadeScreen .arc-action-row button { flex: 1 1 130px; font-size: .75rem; padding: 10px 12px; }
+  html.helm #arcadeScreen .arc-circuit-nodes { gap: 4px; }
+  html.helm #arcadeScreen .arc-circuit-nodes span { font-size: .625rem; padding: 10px 4px; }
+  html.helm #arcadeScreen .arc-truth > span { font-size: .625rem; }
+  html.helm #arcadeScreen .arc-rule { grid-template-columns: minmax(0, 1fr); }
+  html.helm #arcadeScreen .arc-rule > button { grid-column: 1; min-width: 0; min-height: 36px; width: 100%; border-radius: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.helm #arcadeScreen .arc-mode-card:hover:not(:disabled) { transform: none !important; }
+}
+html.helm body.reduce-motion #arcadeScreen .arc-mode-card:hover:not(:disabled) { transform: none !important; }

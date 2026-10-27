@@ -1,0 +1,66 @@
+<section class="screen" hidden id="combatScreen" aria-label="Combat arena">
+  <div class="screen-wrap">
+    <div class="screen-top">
+      <div class="brandmark">CODEBREAKERS // COMBAT LAB</div>
+      <button id="combatBack" type="button">Main menu</button>
+    </div>
+    <div class="arena-panel">
+      <div class="arena-hud">
+        <div class="combat-health">
+          <div class="combat-health-label"><b>Guardian</b><strong id="playerHp">100 HP</strong></div>
+          <div class="hp-track" role="progressbar" aria-label="Guardian health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><i id="playerHpFill"></i></div>
+        </div>
+        <div class="combat-round"><span>LIVE SIMULATION</span><b id="combatRound">ROUND 01</b></div>
+        <div class="combat-health">
+          <div class="combat-health-label"><b>NULL Sentinel</b><strong id="enemyHp">100 HP</strong></div>
+          <div class="hp-track enemy" role="progressbar" aria-label="Sentinel health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><i id="enemyHpFill"></i></div>
+        </div>
+      </div>
+      <div class="combat-workspace">
+        <article class="combat-challenge" aria-labelledby="combatPrompt">
+          <div class="combat-question-top">
+            <span class="combat-section-label"><svg class="ico" aria-hidden="true"><use href="#i-brain"/></svg>PROGRAMMING CHALLENGE</span>
+            <span class="combat-mode" id="combatMode">ATTACK MODE</span>
+          </div>
+          <p class="combat-question-label">YOUR NEXT MOVE</p>
+          <h2 class="combat-prompt" id="combatPrompt" tabindex="-1"></h2>
+          <p class="combat-question-help" id="combatQuestionHelp">Choose the correct answer to deal 27 damage.</p>
+          <div class="options" id="combatAnswers" role="group" aria-labelledby="combatPrompt" aria-describedby="combatQuestionHelp"></div>
+          <div class="combat-question-footer"><span id="combatQuestionStatus">Select one answer</span><span class="combat-keyboard-tip">Keys <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></span></div>
+        </article>
+        <aside class="combat-stage" id="combatStage" aria-label="Battle simulation" data-phase="ready">
+          <div class="combat-stage-caption"><span class="combat-live-dot"></span>TRAINING ARENA<span>01 / NULL</span></div>
+          <div class="arena-characters" id="combatScene" aria-busy="false">
+            <div class="fighter" id="playerFighter"></div>
+            <span class="combat-stage-vs" aria-hidden="true">VS</span>
+            <div class="fighter foe" id="enemyFighter"></div>
+            <div class="combat-effects" id="combatEffects" aria-hidden="true"></div>
+          </div>
+          <div class="combat-stage-names"><span>GUARDIAN</span><span>NULL SENTINEL</span></div>
+          <p class="combat-narration" id="combatNarration" role="status" aria-live="polite">Answer correctly to launch your attack.</p>
+          <div class="combat-result" id="combatResult" hidden role="region" aria-labelledby="combatResultTitle">
+            <div class="combat-result-top"><span id="combatResultKicker">ANSWER VERIFIED</span><span id="combatResultRound">ROUND 01</span></div>
+            <h3 id="combatResultTitle">Correct answer!</h3>
+            <p class="arena-log" id="combatLog"></p>
+            <p class="combat-round-damage" id="combatRoundDamage"></p>
+            <div class="combat-answer-review" id="combatAnswerReview"><span>CORRECT ANSWER</span><strong id="combatCorrectAnswer"></strong><p id="combatExplanation"></p></div>
+            <div class="combat-result-actions">
+              <button class="primary" id="combatNext" type="button"><span id="combatNextLabel">Attack next</span><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+              <button id="combatAbort" type="button">Abort battle</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="combat-toolbar">
+        <div class="combat-toolbar-label"><span>CHOOSE YOUR TACTIC</span><p>Attack to strike. Defend to reduce incoming damage.</p></div>
+        <div class="combat-actions">
+          <button id="attackBtn" type="button" aria-pressed="true">Attack</button>
+          <button id="defendBtn" type="button" aria-pressed="false">Defend</button>
+          <button id="healBtn" type="button">Repair (+15 HP · 2 charges)</button>
+          <button id="combatReset" type="button">New battle</button>
+        </div>
+      </div>
+      <p class="combat-disclaimer"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>Practice makes a stronger programmer. All combat is simulated.</p>
+    </div>
+  </div>
+</section>

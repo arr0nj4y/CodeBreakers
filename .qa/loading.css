@@ -1,0 +1,74 @@
+/* A startup overlay, independent of the navigation's current page color. */
+html.helm #bootScreen.screen {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 200 !important;
+  display: grid !important;
+  place-items: center;
+  min-height: 100dvh;
+  padding: 36px 24px !important;
+  overflow: auto;
+  background: radial-gradient(ellipse at 72% 25%, #6b35c721, transparent 52%), radial-gradient(ellipse at 24% 80%, #13c6dd16, transparent 50%), #060914 !important;
+  opacity: 1 !important;
+  transition: opacity .24s ease;
+}
+html.helm #bootScreen.screen[hidden] { display: none !important; }
+html.helm #bootScreen.screen.is-leaving { opacity: 0 !important; pointer-events: none; }
+html.helm #bootScreen.screen::before {
+  content: '' !important;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(#8eb8ff05 1px, transparent 1px), linear-gradient(90deg, #8eb8ff05 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, #000, transparent 74%);
+}
+html.helm #bootScreen .boot-content { position: relative; width: min(500px, 100%); min-height: 0; margin: auto; display: block; text-align: center; }
+.boot-emblem { position: relative; display: grid; place-items: center; width: 152px; height: 152px; margin: 0 auto 32px; }
+.boot-orbit { position: absolute; border: 1px solid #67eced35; border-radius: 50%; pointer-events: none; }
+.boot-orbit-outer { inset: 0; border-top-color: #68f0eb; border-bottom-color: #a78afd; box-shadow: 0 0 24px #56e3f00c, inset 0 0 24px #8f68ef08; animation: boot-orbit-spin 12s linear infinite; }
+.boot-orbit-outer::before { content: ''; position: absolute; left: 19px; top: 19px; width: 5px; height: 5px; border-radius: 50%; background: #7bf3ec; box-shadow: 0 0 14px #7bf3ec; }
+.boot-orbit-inner { inset: 12px; border-style: dashed; border-color: #a38fe737; animation: boot-orbit-spin 20s linear infinite reverse; }
+.boot-emblem-glow { position: absolute; inset: 25px; border-radius: 50%; background: radial-gradient(circle, #7165d52e, #34d9df09 60%, transparent 75%); box-shadow: 0 0 42px #5573da18; }
+.boot-logo { position: relative; width: 92px; height: 92px; object-fit: contain; filter: drop-shadow(0 0 16px #56dddf26); }
+html.helm #bootScreen .boot-kicker { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 0 0 14px; color: #83d8e2; font: 500 .625rem/1.5 var(--f-mono); letter-spacing: .13em; }
+.boot-kicker > span { width: 5px; height: 5px; border-radius: 50%; background: #72f2dc; box-shadow: 0 0 10px #72f2dc70; }
+html.helm #bootScreen .loading-logo { margin: 0; color: #eef6ff; font: 600 clamp(2.125rem, 6.5vw, 3.25rem)/1.1 var(--f-display); letter-spacing: .045em; text-shadow: 0 0 36px #71dcf11c; }
+html.helm #bootScreen .loading-logo span { color: #a89bff; }
+html.helm #bootScreen #bootTitle { margin: 22px 0 10px; color: #e7edfa; font: 500 clamp(1.125rem, 3vw, 1.375rem)/1.4 var(--f-body); letter-spacing: -.02em; }
+html.helm #bootScreen #bootTitle:focus-visible,
+html.helm #helmDeck .head-title h1[tabindex="-1"]:focus-visible { outline: none !important; }
+html.helm #bootScreen .boot-description { max-width: 350px; margin: 0 auto; color: #94a4be; font: 400 .875rem/1.7 var(--f-body); }
+.boot-progress-panel { margin-top: 34px; padding: 22px 24px; border: 1px solid #34435f; border-radius: 13px; background: #0d1525bd; box-shadow: inset 0 1px 0 #b0cdff08, 0 12px 40px #0002; text-align: left; }
+.boot-progress-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+.boot-progress-heading > span { color: #9aabc7; font: 500 .625rem/1.5 var(--f-mono); letter-spacing: .12em; }
+.boot-progress-heading strong { color: #a9f6ee; font: 500 1.25rem/1 var(--f-mono); letter-spacing: -.04em; font-variant-numeric: tabular-nums; text-shadow: 0 0 20px #69eae52c; }
+html.helm #bootScreen .loading-track { height: 10px; margin: 0; overflow: hidden; border: 1px solid #384761; border-radius: 6px; background: #101c30; }
+html.helm #bootScreen #loadFill { height: 100%; width: 0%; border-radius: 5px; background: linear-gradient(90deg, #49d9e8, #74ecd8 48%, #aa8af7); box-shadow: 0 0 16px #5cebdd52; transition: none; }
+html.helm #bootScreen .bootline { min-height: 18px; margin: 13px 0 0; color: #8fa3bf; font: 400 .6875rem/1.65 var(--f-body); }
+html.helm #bootScreen[data-ready="true"] .bootline { color: #8ee4c8; }
+html.helm #bootScreen .boot-foot { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 26px; color: #71839d; font: 400 .5625rem/1.5 var(--f-mono); letter-spacing: .08em; }
+.boot-foot > span { width: 26px; height: 1px; background: #33405c; }
+@keyframes boot-orbit-spin { to { transform: rotate(360deg); } }
+@media (max-width: 600px) {
+  html.helm #bootScreen.screen { padding: 28px 20px !important; }
+  .boot-emblem { width: 128px; height: 128px; margin-bottom: 28px; }
+  .boot-logo { width: 80px; height: 80px; }
+  .boot-progress-panel { margin-top: 28px; padding: 20px 18px; }
+  html.helm #bootScreen .boot-description { font-size: .8125rem; }
+  html.helm #bootScreen .boot-kicker { font-size: .5625rem; letter-spacing: .08em; }
+  html.helm #bootScreen .boot-foot { font-size: .5rem; gap: 8px; letter-spacing: .04em; }
+  .boot-foot > span { width: 18px; }
+}
+@media (max-height: 700px) {
+  .boot-emblem { width: 100px; height: 100px; margin-bottom: 20px; }
+  .boot-logo { width: 68px; height: 68px; }
+  html.helm #bootScreen .loading-logo { font-size: 2.25rem; }
+  html.helm #bootScreen #bootTitle { margin-top: 16px; }
+  .boot-progress-panel { margin-top: 24px; padding-top: 18px; padding-bottom: 18px; }
+  html.helm #bootScreen .boot-foot { margin-top: 20px; }
+}
+@media (max-height: 500px) {
+  html.helm #bootScreen.screen { place-items: start center; }
+  html.helm #bootScreen .boot-content { margin: 0 auto; }
+}

@@ -1,10 +1,11 @@
 ﻿const {chromium}=require('playwright'),assert=require('node:assert/strict');
 (async()=>{
+ const path=require('node:path'),{pathToFileURL}=require('node:url');
  const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
  const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
- await page.goto('file:///C:/Users/Admin/Desktop/caja_game/codebreakers_tripleA_cinematic_polish_v3.html');
- await page.waitForTimeout(1500);
+ await page.goto(pathToFileURL(path.resolve('codebreakers_tripleA_cinematic_polish_v3.html')).href);
+ await page.waitForFunction(()=>window.CBBoot?.active===false&&document.getElementById('bootScreen')?.hidden);
  for(const id of [1,3]){
   await page.evaluate(id=>{load(id);showScreen('game')},id);
   await page.locator('#learnWorked').click();await page.locator('#learnSpeed').selectOption('160');

@@ -71,10 +71,16 @@ async function api(req, res, parts) {
 }
 
 http.createServer((req, res) => {
- const url = new URL(req.url, 'http://localhost');
+ let url, rel;
+ try {
+  url = new URL(req.url, 'http://localhost');
+  rel = decodeURIComponent(url.pathname);
+  if (rel.includes('\0')) throw new Error('Invalid path');
+ } catch (_) {
+  return send(res, 400, { error: 'Invalid request URL' });
+ }
  const parts = url.pathname.split('/').filter(Boolean);
  if (parts[0] === 'api') return api(req, res, parts).catch(e => send(res, 400, { error: e.message || 'Bad request' }));
- let rel = decodeURIComponent(url.pathname);
  if (rel === '/') rel = '/' + game;
  const file = path.join(root, rel);
  if (!file.startsWith(root + path.sep) || file.startsWith(dataDir)) { res.writeHead(403); return res.end('Forbidden'); }

@@ -1,0 +1,365 @@
+/* Teacher dashboard presentation only. All copy, controls and data stay intact. */
+html.helm #teacherScreen {
+  --teacher-surface: #101722;
+  --teacher-raised: #151f2d;
+  --teacher-line: #26374a;
+  --teacher-blue: #9acbfa;
+  --teacher-muted: #a0b0c3;
+  background: #090e16 !important;
+}
+html.helm #teacherScreen > .screen-wrap {
+  max-width: 1480px;
+  padding: 32px clamp(20px, 3vw, 44px) 48px;
+}
+html.helm #teacherScreen .helm-head {
+  gap: 16px;
+  margin-bottom: 28px;
+  padding: 0 0 26px;
+  border-color: var(--teacher-line);
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+html.helm #teacherScreen .helm-head::after {
+  width: 56px;
+  height: 2px;
+  background: var(--teacher-blue);
+}
+html.helm #teacherScreen .head-cap {
+  flex: 0 0 48px;
+  min-height: 48px;
+  align-self: flex-start;
+  border: 1px solid #34516c;
+  border-radius: 13px;
+  background: #142638 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%239acbfa' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 9 9-4 9 4-9 4-9-4Zm4 2v5c3 3 7 3 10 0v-5M21 9v6'/%3E%3C/svg%3E") center/25px no-repeat;
+}
+html.helm #teacherScreen .head-title { flex: 1; }
+html.helm #teacherScreen .head-title h1 {
+  margin: 0;
+  color: #f0f5fc;
+  font: 600 clamp(1.625rem, 2.5vw, 2.125rem)/1.2 var(--f-body);
+  letter-spacing: -.035em;
+  text-transform: none;
+}
+html.helm #teacherScreen .head-title p {
+  max-width: 86ch;
+  margin: 9px 0 0;
+  color: var(--teacher-muted);
+  font: 400 .875rem/1.65 var(--f-body);
+}
+
+/* Class setup becomes a focused command card with a subtle blue light. */
+html.helm #teacherScreen .class-panel {
+  margin-bottom: 24px;
+  padding: 26px 28px;
+  border: 1px solid #30465d;
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at 100% 0, #6baeff12, transparent 58%),
+    linear-gradient(115deg, #142031, #101722 70%);
+  box-shadow: 0 10px 32px #0002;
+  clip-path: none;
+}
+html.helm #teacherScreen .class-empty h2,
+html.helm #teacherScreen .class-meta h2 {
+  color: #eef5ff;
+  font: 600 1.25rem/1.35 var(--f-body);
+  letter-spacing: -.02em;
+  text-transform: none;
+}
+html.helm #teacherScreen .class-empty > p {
+  max-width: 88ch;
+  margin: 9px 0 22px;
+  color: var(--teacher-muted);
+  font-size: .875rem;
+  line-height: 1.65;
+}
+html.helm #teacherScreen .class-create {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: end;
+}
+html.helm #teacherScreen .field,
+html.helm #teacherScreen .teacher-toolbar label {
+  gap: 9px;
+  color: #b2c0d1;
+  font: 500 .6875rem/1.4 var(--f-body);
+  letter-spacing: .08em;
+}
+html.helm #teacherScreen input:not([type="file"]),
+html.helm #teacherScreen select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 11px 14px;
+  border: 1px solid #34475b;
+  border-radius: 9px;
+  background: #0b131e;
+  color: #edf4ff;
+  font: 400 .875rem/1.4 var(--f-body);
+  letter-spacing: 0;
+  box-shadow: inset 0 2px 4px #0001;
+}
+html.helm #teacherScreen input::placeholder { color: #8496ad; opacity: 1; }
+html.helm #teacherScreen input:hover,
+html.helm #teacherScreen select:hover { border-color: #54718d; }
+html.helm #teacherScreen input:focus-visible,
+html.helm #teacherScreen select:focus-visible {
+  outline: 2px solid var(--teacher-blue) !important;
+  outline-offset: 3px !important;
+  border-color: var(--teacher-blue);
+}
+html.helm #teacherScreen button {
+  min-height: 42px;
+  padding: 10px 16px;
+  border-radius: 9px;
+  border-color: #33475d;
+  background: #192637;
+  color: #dce8f7;
+  font: 600 .8125rem/1.4 var(--f-body);
+  letter-spacing: 0;
+}
+html.helm #teacherScreen button:hover:not(:disabled) {
+  background: #21354b;
+  border-color: #688bad;
+  color: #f3f8ff;
+}
+html.helm #teacherScreen .btn-hazard,
+html.helm #teacherScreen button.primary {
+  min-height: 46px;
+  background: #f4cc52;
+  border-color: #f4cc52;
+  color: #151716;
+  box-shadow: 0 3px 12px #f4cc5210;
+}
+html.helm #teacherScreen .btn-hazard:hover:not(:disabled),
+html.helm #teacherScreen button.primary:hover:not(:disabled) {
+  background: #ffdc75;
+  border-color: #ffdc75;
+  color: #151716;
+}
+html.helm #teacherScreen .class-demo {
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-color: var(--teacher-line);
+  color: var(--teacher-muted);
+  font-size: .8125rem;
+  line-height: 1.6;
+}
+html.helm #teacherScreen .class-demo button { background: #172a3d; border-color: #3b5874; color: #badcff; }
+html.helm #teacherScreen .class-demo > span { flex: 1 1 280px; }
+html.helm #teacherScreen .class-top { gap: 22px; }
+html.helm #teacherScreen .class-code-block {
+  gap: 12px;
+  min-width: 210px;
+  padding: 18px 22px;
+  border: 1px solid #3d5d7a;
+  border-radius: 12px;
+  background: #0b1725;
+  box-shadow: inset 0 0 24px #71baff06;
+}
+html.helm #teacherScreen .class-code-label { color: #93afc9; font-size: .625rem; letter-spacing: .14em; }
+html.helm #teacherScreen .class-code { color: #b4ddff; font-size: 1.875rem; letter-spacing: .1em; }
+html.helm #teacherScreen .class-meta p { color: var(--teacher-muted); font-size: .875rem; line-height: 1.5; }
+html.helm #teacherScreen .class-counts { margin-top: 10px; }
+html.helm #teacherScreen .class-counts b { color: #b4ddff; font: 600 .9375rem var(--f-mono); }
+html.helm #teacherScreen .class-actions { gap: 8px; }
+html.helm #teacherScreen .class-actions .warn { color: #f3a99d; background: #2b2026; border-color: #63414a; }
+html.helm #teacherScreen .class-howto { margin-top: 20px; color: #c0ccdc; font-size: .8125rem; line-height: 1.7; }
+html.helm #teacherScreen .class-live { margin-top: 14px; padding: 13px 16px; border: 1px solid var(--teacher-line); border-radius: 9px; background: #0d1825; color: var(--teacher-muted); font-size: .8125rem; line-height: 1.7; box-shadow: none; }
+html.helm #teacherScreen .class-live[data-on="1"] { border-color: #315548; }
+html.helm #teacherScreen .class-live code { color: #b4ddff; font-size: .75rem; overflow-wrap: anywhere; }
+
+/* Navigation reads as dashboard tabs rather than a second sidebar. */
+html.helm #teacherScreen .stellar-teacher-layout { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+html.helm #teacherScreen .teacher-side {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--teacher-line);
+  border-radius: 12px;
+  background: #0d1521;
+  box-shadow: 0 8px 22px #0002;
+}
+html.helm #teacherScreen .teacher-nav {
+  justify-content: center;
+  min-width: 0;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #a5b5c9;
+  font: 500 .8125rem/1.35 var(--f-body);
+  text-transform: none;
+  white-space: normal;
+}
+html.helm #teacherScreen .teacher-nav.active {
+  background: #1d344d;
+  border-color: #3e5f7e;
+  color: #d5ebff;
+  box-shadow: inset 0 1px 0 #8dc8ff13;
+}
+html.helm #teacherScreen .teacher-panel { padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
+html.helm #teacherScreen #teacherOverview { display: flex; flex-direction: column; gap: 22px; }
+html.helm #teacherScreen #teacherOverview > * { min-width: 0; margin: 0; }
+html.helm #teacherScreen .dashboard-stats {
+  order: -2;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+html.helm #teacherScreen .dashboard-stats > div {
+  position: relative;
+  min-width: 0;
+  min-height: 122px;
+  padding: 18px;
+  gap: 15px;
+  justify-content: space-between;
+  border: 1px solid var(--teacher-line);
+  border-radius: 12px;
+  background: linear-gradient(130deg, #172232, var(--teacher-surface));
+  box-shadow: 0 6px 20px #0001;
+}
+html.helm #teacherScreen .dashboard-stats > div::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  bottom: 17px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #344f6c;
+  border-radius: 8px;
+  background: #8fc4ff0a var(--stat-icon) center/17px no-repeat;
+}
+html.helm #teacherScreen .dashboard-stats > div:nth-child(1) { --stat-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239acbfa' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='9' cy='8' r='3'/%3E%3Cpath d='M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6m1 3c2 1 3 2 3 5'/%3E%3C/svg%3E"); }
+html.helm #teacherScreen .dashboard-stats > div:nth-child(2) { --stat-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239acbfa' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a9 9 0 1 1-9 9M12 3v9h9'/%3E%3C/svg%3E"); }
+html.helm #teacherScreen .dashboard-stats > div:nth-child(3) { --stat-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ddfc9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8 12 3 3 5-6'/%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3C/svg%3E"); }
+html.helm #teacherScreen .dashboard-stats > div:nth-child(4) { --stat-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cebcf3' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10c3 0 5 10 3 11-2 1-4-3-5-3H9c-1 0-3 4-5 3C2 17 4 7 7 7ZM7 10v4m-2-2h4m7-1h.01m2 2h.01'/%3E%3C/svg%3E"); }
+html.helm #teacherScreen .dashboard-stats > div:nth-child(5) { --stat-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cebcf3' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20h16M7 16v-5m5 5V7m5 9V4'/%3E%3C/svg%3E"); }
+html.helm #teacherScreen .dashboard-stats small { color: #b3c3d6; font: 500 .625rem/1.5 var(--f-body); letter-spacing: .07em; }
+html.helm #teacherScreen .dashboard-stats strong { color: #b6dfff; font: 600 2rem/1 var(--f-mono); letter-spacing: -.05em; }
+html.helm #teacherScreen .dashboard-stats > div:nth-child(3) strong { color: #9ddfc9; }
+html.helm #teacherScreen .dashboard-stats > div:nth-child(n+4) strong { color: #cebcf3; }
+html.helm #teacherScreen .teacher-toolbar {
+  order: -1;
+  gap: 12px;
+  padding: 20px;
+  align-items: flex-end;
+  border: 1px solid var(--teacher-line);
+  border-radius: 12px;
+  background: var(--teacher-surface);
+}
+html.helm #teacherScreen .teacher-toolbar > label:not(.import-file) { flex: 1 1 180px; min-width: 0; }
+html.helm #teacherScreen .teacher-toolbar > .import-file { flex: 1 1 260px; min-width: 0; padding: 12px 14px; border: 1px dashed #3a5670; border-radius: 9px; background: #0e1b29; color: #aac8e7; }
+html.helm #teacherScreen .import-title { display: inline-flex; align-items: center; gap: 8px; font-size: .625rem; }
+html.helm #teacherScreen input[type="file"] { width: 100%; min-width: 0; max-width: 100%; padding: 0; font-size: .75rem; color: #a7b8cc; }
+html.helm #teacherScreen input[type="file"]::file-selector-button { margin-right: 10px; padding: 7px 10px; border: 1px solid #3c526b; border-radius: 6px; background: #1c2c40; font-size: .75rem; }
+html.helm #teacherScreen #teacherClear { color: #c3aeb6; background: transparent; border-color: #493a46; }
+
+/* Roster and genuine progress data get room to breathe. */
+html.helm #teacherScreen .teacher-chart {
+  padding: 22px;
+  border: 1px solid var(--teacher-line);
+  border-radius: 12px;
+  background: var(--teacher-surface);
+  box-shadow: none;
+}
+html.helm #teacherScreen .teacher-chart h3 { margin-bottom: 20px; color: #e4edf9; font: 600 .9375rem/1.4 var(--f-body); letter-spacing: -.01em; text-transform: none; }
+html.helm #teacherScreen .chart-rows { gap: 14px; }
+html.helm #teacherScreen .chart-row { grid-template-columns: minmax(110px, 170px) minmax(0, 1fr) 44px; gap: 18px; font-size: .8125rem; color: #bfcee0; }
+html.helm #teacherScreen .chart-row > span:nth-child(2) { background: #1b2a3d; border-radius: 5px; overflow: hidden; }
+html.helm #teacherScreen .chart-row i { height: 7px; border-radius: 5px; background: linear-gradient(90deg, #5488bd, #a6d4fa); }
+html.helm #teacherScreen .chart-row b { color: #b6dfff; font: 500 .75rem/1.3 var(--f-mono); }
+html.helm #teacherScreen .dashboard-table-wrap,
+html.helm #teacherScreen .learning-table-wrap { border: 1px solid var(--teacher-line); border-radius: 12px; background: var(--teacher-surface); }
+html.helm #teacherScreen .dashboard-table,
+html.helm #teacherScreen .learning-table { min-width: 850px; font-size: .8125rem; }
+html.helm #teacherScreen .dashboard-table th,
+html.helm #teacherScreen .learning-table th { padding: 16px; background: #172232; border-color: #2b4057; color: #9fb5ce; font: 500 .625rem/1.4 var(--f-body); letter-spacing: .06em; }
+html.helm #teacherScreen .dashboard-table td,
+html.helm #teacherScreen .learning-table td { padding: 16px; border-color: #223246; color: #b4c3d6; line-height: 1.5; font-variant-numeric: tabular-nums; }
+html.helm #teacherScreen .dashboard-table th:not(:first-child),
+html.helm #teacherScreen .dashboard-table td:not(:first-child) { text-align: right; }
+html.helm #teacherScreen .dashboard-table td:first-child,
+html.helm #teacherScreen .learning-table td:first-child { color: #e6effb; font-weight: 500; }
+html.helm #teacherScreen .dashboard-table td[colspan] { padding: 32px 24px; color: var(--teacher-muted); font-weight: 400; text-align: center; }
+html.helm #teacherScreen .dashboard-table tbody tr:last-child td,
+html.helm #teacherScreen .learning-table tbody tr:last-child td { border-bottom: 0; }
+html.helm #teacherScreen .dashboard-table tbody tr:hover td,
+html.helm #teacherScreen .learning-table tbody tr:hover td { background: #152233; }
+html.helm #teacherScreen .src-badge { margin-left: 8px; padding: 4px 7px; border-radius: 5px; font-size: .5625rem; letter-spacing: .03em; }
+html.helm #teacherScreen .teacher-modes-title { margin-top: 4px; color: #b9c9dc; font-size: .6875rem; line-height: 1.6; }
+html.helm #teacherScreen .teacher-mode-grid { gap: 12px; }
+html.helm #teacherScreen .teacher-mode-card { padding: 16px; border: 1px solid var(--teacher-line); border-radius: 10px; background: var(--teacher-surface); box-shadow: none; color: #bdcde0; font: 500 .75rem/1.5 var(--f-body); }
+html.helm #teacherScreen .teacher-mode-bar { height: 5px; margin-top: 14px; border-radius: 4px; background: #26384e; }
+html.helm #teacherScreen .teacher-mode-bar i { border-radius: 4px; background: #94c4f2; }
+html.helm #teacherScreen #teacherNotice { padding: 16px 18px; border-left: 2px solid #4d7093; border-radius: 0 8px 8px 0; background: #101b29; color: #a4b5cb; font-size: .8125rem; line-height: 1.75; }
+html.helm #teacherScreen #learningTeacher { margin-top: 28px; padding: 24px; border: 1px solid var(--teacher-line); border-radius: 14px; background: var(--teacher-surface); }
+html.helm #teacherScreen #learningTeacher h2 { margin-bottom: 12px; color: #e5effc; font: 600 1.1875rem/1.4 var(--f-body); letter-spacing: -.02em; text-transform: none; }
+html.helm #teacherScreen #learningTeacher > p { max-width: 100ch; color: #a9bad0; font-size: .8125rem; line-height: 1.75; }
+html.helm #teacherScreen .learn-playtest { margin-top: 20px; padding: 8px 16px; border: 1px solid var(--teacher-line); border-radius: 8px; background: #121f2e; }
+html.helm #teacherScreen .learn-playtest summary { padding: 8px 0; font-size: .8125rem; }
+html.helm #teacherScreen .learn-playtest p { padding: 10px 0; color: var(--teacher-muted); font-size: .8125rem; }
+html.helm #teacherScreen :is(#teacherOverview, #teacherStudentTable, #teacherSkillPanel, #teacherReportActions) { scroll-margin-top: 90px; }
+
+@media (max-width: 1279px) {
+  html.helm #teacherScreen .dashboard-stats { gap: 9px; }
+  html.helm #teacherScreen .dashboard-stats > div { min-height: 116px; padding: 14px; }
+  html.helm #teacherScreen .dashboard-stats > div::after { width: 25px; height: 25px; right: 12px; border-radius: 6px; background-size: 15px; }
+  html.helm #teacherScreen .dashboard-stats strong { font-size: 1.625rem; }
+  html.helm #teacherScreen .teacher-toolbar > label:not(.import-file) { flex-basis: 40%; }
+  html.helm #teacherScreen .teacher-toolbar > .import-file { flex-basis: 50%; }
+}
+@media (max-width: 899px) {
+  html.helm #teacherScreen > .screen-wrap { padding: 24px 20px 36px; }
+  html.helm #teacherScreen .class-panel { padding: 22px; }
+  html.helm #teacherScreen .teacher-toolbar > * { flex: 1 1 42%; }
+  html.helm #teacherScreen .dashboard-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  html.helm #teacherScreen .dashboard-stats > div:last-child { grid-column: auto; }
+  html.helm #teacherScreen .dashboard-stats > div { min-height: 112px; }
+  html.helm #teacherScreen .class-create { gap: 12px; }
+}
+@media (max-width: 600px) {
+  html.helm #teacherScreen > .screen-wrap { padding: 20px 16px 30px; }
+  html.helm #teacherScreen .helm-head { gap: 12px; margin-bottom: 22px; padding-bottom: 22px; }
+  html.helm #teacherScreen .head-cap { flex-basis: 38px; min-height: 38px; border-radius: 10px; background-size: 21px; }
+  html.helm #teacherScreen .head-title h1 { font-size: 1.5rem; }
+  html.helm #teacherScreen .head-title p { font-size: .8125rem; line-height: 1.65; }
+  html.helm #teacherScreen .class-panel { padding: 20px 18px; border-radius: 12px; }
+  html.helm #teacherScreen .class-empty h2,
+  html.helm #teacherScreen .class-meta h2 { font-size: 1.125rem; }
+  html.helm #teacherScreen .class-empty > p { font-size: .8125rem; }
+  html.helm #teacherScreen .class-create { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  html.helm #teacherScreen .class-create > button { width: 100%; margin-top: 2px; }
+  html.helm #teacherScreen .class-demo { align-items: flex-start; gap: 12px; }
+  html.helm #teacherScreen .class-demo > span { flex-basis: 100%; font-size: .75rem; }
+  html.helm #teacherScreen .class-top { gap: 18px; }
+  html.helm #teacherScreen .class-code-block { width: 100%; min-width: 0; padding: 16px 18px; }
+  html.helm #teacherScreen .class-code { font-size: 1.75rem; }
+  html.helm #teacherScreen .class-actions { width: 100%; }
+  html.helm #teacherScreen .class-actions > * { flex: 1 1 auto; }
+  html.helm #teacherScreen .class-live { padding: 12px; font-size: .75rem; }
+  html.helm #teacherScreen .class-howto { font-size: .75rem; }
+  html.helm #teacherScreen .teacher-side { top: 6px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 5px; }
+  html.helm #teacherScreen .teacher-nav { min-height: 39px; padding: 9px; font-size: .75rem; }
+  html.helm #teacherScreen .dashboard-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  html.helm #teacherScreen .dashboard-stats > div { min-height: 112px; padding: 16px; }
+  html.helm #teacherScreen .dashboard-stats > div:last-child { grid-column: 1 / -1; }
+  html.helm #teacherScreen .dashboard-stats strong { font-size: 1.75rem; }
+  html.helm #teacherScreen .teacher-toolbar { padding: 16px; gap: 14px; }
+  html.helm #teacherScreen .teacher-toolbar > * { flex: 1 1 100% !important; max-width: 100%; }
+  html.helm #teacherScreen .teacher-toolbar > .import-file { padding: 14px 12px; }
+  html.helm #teacherScreen .teacher-chart { padding: 18px 16px; }
+  html.helm #teacherScreen .chart-row { grid-template-columns: minmax(78px, 110px) minmax(0, 1fr) 34px; gap: 10px; font-size: .75rem; }
+  html.helm #teacherScreen .chart-row b { font-size: .6875rem; }
+  html.helm #teacherScreen .teacher-mode-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  html.helm #teacherScreen .teacher-mode-card { padding: 13px; font-size: .6875rem; overflow-wrap: anywhere; }
+  html.helm #teacherScreen #learningTeacher { padding: 20px 16px; }
+  html.helm #teacherScreen #teacherNotice { padding: 14px; font-size: .75rem; }
+  html.helm #teacherScreen :is(#teacherOverview, #teacherStudentTable, #teacherSkillPanel, #teacherReportActions) { scroll-margin-top: 112px; }
+}

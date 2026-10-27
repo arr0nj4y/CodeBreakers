@@ -1,0 +1,166 @@
+/* Combat: the question leads; the simulation supports it. */
+html.helm #combatScreen .arena-panel {
+  max-width: 1200px;
+  gap: 20px;
+}
+html.helm #combatScreen .arena-hud {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 28px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--hull);
+  box-shadow: none;
+}
+html.helm #combatScreen .combat-health { min-width: 0; text-align: left; }
+.combat-health-label { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+html.helm #combatScreen .combat-health-label b { font: 600 .875rem/1.2 var(--f-body); letter-spacing: .02em; }
+html.helm #combatScreen .combat-health-label strong { font: 500 .8125rem/1 var(--f-mono); color: var(--ok); }
+html.helm #combatScreen .combat-health:last-child strong { color: var(--coral); }
+html.helm #combatScreen .hp-track { height: 7px; margin: 12px 0 0; border-radius: 4px; mask: none; -webkit-mask: none; transform: none; }
+html.helm #combatScreen .hp-track i { background: var(--ok) !important; }
+html.helm #combatScreen .hp-track.enemy i { background: var(--coral) !important; }
+.combat-round { display: grid; justify-items: center; gap: 6px; }
+.combat-round span { color: var(--text-3); font: 500 .625rem/1.2 var(--f-body); letter-spacing: .12em; }
+html.helm #combatScreen .combat-round b { font: 600 1.125rem/1 var(--f-display); color: var(--text); letter-spacing: .08em; white-space: nowrap; }
+.combat-workspace { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 20px; align-items: stretch; }
+.combat-workspace > * { min-width: 0; }
+html.helm .combat-challenge {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 2.3vw, 32px);
+  background: linear-gradient(135deg, rgba(255, 210, 31, .055), transparent 60%), var(--hull);
+  border: 1px solid #5f5530;
+  border-top: 3px solid var(--hazard);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px #0002;
+}
+.combat-question-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 27px; }
+.combat-section-label { display: inline-flex; align-items: center; gap: 8px; color: var(--hazard); font: 600 .6875rem/1.2 var(--f-body); letter-spacing: .09em; }
+.combat-section-label .ico { width: 17px; height: 17px; }
+.combat-mode { border: 1px solid var(--line-2); border-radius: 5px; padding: 6px 8px; color: var(--text-2); font: 500 .625rem/1 var(--f-mono); letter-spacing: .06em; }
+html.helm .combat-question-label { margin: 0 0 10px; color: var(--text-3); font: 500 .625rem/1.3 var(--f-body); letter-spacing: .16em; }
+html.helm #combatScreen .combat-prompt { margin: 0; color: #fff7de; font: 600 clamp(1.375rem, 2.05vw, 1.875rem)/1.3 var(--f-body); letter-spacing: -.02em; text-wrap: pretty; overflow-wrap: anywhere; }
+html.helm .combat-question-help { margin: 12px 0 26px; color: var(--text-2); font: 400 .875rem/1.5 var(--f-body); }
+html.helm #combatScreen #combatAnswers { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: auto; }
+html.helm #combatScreen #combatAnswers button {
+  display: flex;
+  justify-content: flex-start;
+  gap: 14px;
+  min-height: 62px;
+  padding: 12px 16px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--hull-2);
+  text-align: left;
+  font: 500 .9375rem/1.5 var(--f-mono);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+html.helm #combatScreen #combatAnswers button:hover:not(:disabled) { background: #242b2c; border-color: var(--hazard); }
+.combat-answer-number { display: grid; place-items: center; flex: 0 0 28px; height: 28px; border: 1px solid var(--line-2); border-radius: 5px; color: var(--text-3); font: 500 .6875rem/1 var(--f-mono); }
+.combat-answer-text { min-width: 0; }
+.combat-answer-mark { margin-left: auto; color: inherit; font: 600 .625rem/1.3 var(--f-body); }
+html.helm #combatScreen #combatAnswers button:disabled { opacity: .65; }
+html.helm #combatScreen #combatAnswers button.is-correct { border-color: var(--ok); color: var(--ok); background: #142a21; opacity: 1; }
+html.helm #combatScreen #combatAnswers button.is-incorrect { border-color: var(--coral); color: #ffb8ac; background: #2e1b1b; opacity: 1; }
+.combat-question-footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; color: var(--text-3); font: 400 .75rem/1.5 var(--f-body); }
+.combat-keyboard-tip { white-space: nowrap; }
+.combat-keyboard-tip kbd { padding: 1px 4px; margin-left: 2px; border: 1px solid var(--line-2); border-radius: 3px; font: 400 .6875rem/1.4 var(--f-mono); }
+.combat-stage { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: radial-gradient(ellipse at 50% 55%, #ff7a630b, transparent 75%), var(--hull); overflow: hidden; }
+.combat-stage-caption { display: flex; align-items: center; gap: 8px; color: var(--text-3); font: 500 .625rem/1.4 var(--f-mono); letter-spacing: .06em; }
+.combat-stage-caption > span:last-child { margin-left: auto; color: var(--coral); }
+.combat-live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ok); }
+html.helm #combatScreen .arena-characters { grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr); align-items: center; min-height: 225px; margin: 20px -12px 0; padding: 0; background: radial-gradient(ellipse at 50% 90%, #ff7a6310, transparent 60%); box-shadow: none; clip-path: none; }
+html.helm #combatScreen .fighter { width: 100%; max-width: 180px; }
+.combat-stage-vs { align-self: center; color: #7c5953; font: 600 1rem/1 var(--f-display); letter-spacing: .08em; }
+.combat-stage-names { display: flex; justify-content: space-around; padding: 0 0 20px; border-bottom: 1px solid var(--line); color: var(--text-2); font: 500 .625rem/1.4 var(--f-mono); letter-spacing: .03em; gap: 12px; }
+html.helm .combat-stage > p { margin: 20px 0 0; color: var(--text-3); font: 400 .8125rem/1.7 var(--f-body); text-align: center; }
+.combat-toolbar { padding: 22px 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--hull); }
+.combat-toolbar-label { margin-bottom: 16px; }
+.combat-toolbar-label > span { color: var(--text); font: 600 .6875rem/1.4 var(--f-body); letter-spacing: .08em; }
+html.helm .combat-toolbar-label > p { margin: 5px 0 0; color: var(--text-3); font-size: .8125rem; }
+html.helm #combatScreen .combat-actions { grid-template-columns: 1fr 1fr 1.5fr 1fr; gap: 10px; }
+html.helm #combatScreen .combat-actions button { min-height: 46px; border-radius: 7px; font: 600 .8125rem/1.4 var(--f-body); letter-spacing: 0; text-transform: none; }
+html.helm #combatScreen .combat-actions button[aria-pressed="true"] { background: #302723; border-color: var(--coral); color: #ffad9c; }
+html.helm .combat-disclaimer { display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--text-3); font: 400 .75rem/1.5 var(--f-body); text-align: center; }
+.combat-disclaimer .ico { flex-shrink: 0; }
+
+/* The battle stays visible while feedback appears below the fighters. */
+html.helm .combat-result {
+  --result-accent: var(--ok);
+  position: static;
+  width: 100%;
+  margin: 18px 0 0;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 2px solid var(--result-accent);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  box-shadow: none;
+}
+html.helm .combat-result[data-outcome="incorrect"], html.helm .combat-result[data-outcome="defeat"] { --result-accent: var(--coral); }
+html.helm .combat-result[data-outcome="repair"] { --result-accent: var(--holo); }
+.combat-result-top { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 12px; color: var(--result-accent); font: 500 .625rem/1.3 var(--f-mono); letter-spacing: .07em; }
+html.helm #combatResultTitle { margin: 0 0 10px; font: 600 1.375rem/1.2 var(--f-body); letter-spacing: -.025em; }
+html.helm .combat-result .arena-log { margin: 0; padding: 0; border: 0; background: none; color: var(--text-2); font: 400 .8125rem/1.6 var(--f-body); box-shadow: none; }
+html.helm .combat-round-damage { margin: 10px 0 16px; color: var(--result-accent); font: 500 .6875rem/1.5 var(--f-mono); }
+.combat-answer-review { padding: 14px; border: 1px solid var(--line-2); border-radius: 8px; background: var(--ground); }
+.combat-answer-review > span { display: block; margin-bottom: 8px; color: var(--text-3); font: 600 .625rem/1.4 var(--f-body); letter-spacing: .1em; }
+.combat-answer-review > strong { display: block; color: var(--ok); font: 500 .8125rem/1.5 var(--f-mono); overflow-wrap: anywhere; }
+html.helm .combat-answer-review > p { margin: 10px 0 0; color: var(--text-2); font: 400 .8125rem/1.6 var(--f-body); }
+.combat-result-actions { display: grid; grid-template-columns: 1.2fr 1fr; gap: 8px; margin-top: 18px; }
+html.helm .combat-result-actions button { min-height: 44px; padding: 10px 12px; border-radius: 7px; font-size: .8125rem; white-space: normal; }
+.combat-workspace { align-items: start; }
+.combat-stage { justify-content: flex-start; }
+html.helm #combatScreen .hp-track i { transition: width .38s cubic-bezier(.22,.68,.2,1); }
+html.helm #combatScreen .fighter { transform-origin: 50% 85%; will-change: auto; }
+html.helm #combatScreen .fighter.is-defeated { opacity: .35; transform: translateY(10px) rotate(7deg); }
+html.helm #combatScreen #combatScene { isolation: isolate; }
+.combat-effects { position: absolute; inset: 0; pointer-events: none; z-index: 3; overflow: visible; }
+.combat-effects > span { position: absolute; pointer-events: none; --impact-color: var(--coral); }
+.combat-effects .is-guardian { --impact-color: var(--hazard); }
+.combat-effects .is-shield { --impact-color: var(--holo); }
+.combat-effects .is-healing { --impact-color: var(--ok); }
+.combat-impact { width: 80px; height: 80px; border: 2px solid var(--impact-color); border-radius: 50%; background: radial-gradient(circle, transparent 45%, color-mix(in srgb, var(--impact-color) 15%, transparent)); box-shadow: 0 0 20px color-mix(in srgb, var(--impact-color) 25%, transparent); opacity: 0; }
+.combat-impact.is-shield { width: 116px; height: 136px; border-radius: 45%; border-width: 3px; background: color-mix(in srgb, var(--holo) 9%, transparent); }
+.combat-impact.is-healing { border-style: dashed; }
+.combat-slash { width: 92px; height: 3px; border-radius: 100%; background: linear-gradient(90deg, transparent, var(--impact-color), #fff5dc, transparent); box-shadow: 0 0 12px var(--impact-color); opacity: 0; }
+.combat-damage { color: var(--impact-color); font: 600 1.125rem/1 var(--f-display); letter-spacing: .04em; white-space: nowrap; text-shadow: 0 2px 12px #000; opacity: 0; }
+html.helm .combat-stage > .combat-narration { min-height: 42px; margin-top: 16px; font: 500 .8125rem/1.6 var(--f-body); }
+html.helm #combatStage[data-phase="guardian-attack"] .combat-narration { color: var(--hazard); }
+html.helm #combatStage[data-phase="sentinel-attack"] .combat-narration { color: var(--coral); }
+html.helm #combatStage[data-phase="shield"] .combat-narration { color: var(--holo); }
+
+@media (max-width: 1100px) {
+  .combat-workspace { grid-template-columns: minmax(0, 1fr); }
+  .combat-stage { display: flex; }
+  html.helm #combatScreen .arena-characters { min-height: 200px; max-width: 460px; width: 100%; align-self: center; }
+  html.helm #combatScreen .combat-prompt { max-width: 720px; font-size: 1.625rem; }
+}
+@media (max-width: 600px) {
+  html.helm #combatScreen .arena-panel { gap: 14px; }
+  html.helm #combatScreen .arena-hud { grid-template-columns: 1fr 1fr; gap: 14px 20px; padding: 16px; }
+  .combat-round { grid-column: 1 / -1; grid-row: 1; display: flex; justify-content: space-between; }
+  .combat-round span { font-size: .5625rem; }
+  html.helm #combatScreen .combat-round b { font-size: .9375rem; }
+  html.helm #combatScreen .combat-health-label { gap: 5px; }
+  html.helm #combatScreen .combat-health-label b { font-size: .6875rem; }
+  html.helm #combatScreen .combat-health-label strong { font-size: .625rem; white-space: nowrap; }
+  html.helm .combat-challenge { padding: 20px 16px; }
+  .combat-question-top { gap: 8px; margin-bottom: 22px; }
+  .combat-section-label { font-size: .5625rem; letter-spacing: .05em; gap: 6px; }
+  .combat-mode { font-size: .5625rem; padding: 5px 6px; }
+  html.helm #combatScreen .combat-prompt { font-size: 1.375rem; }
+  html.helm .combat-question-help { font-size: .8125rem; margin-bottom: 22px; }
+  html.helm #combatScreen #combatAnswers button { padding: 12px; gap: 10px; font-size: .8125rem; min-height: 58px; }
+  .combat-keyboard-tip { display: none; }
+  .combat-toolbar { padding: 18px 16px; }
+  html.helm #combatScreen .combat-actions { grid-template-columns: 1fr 1fr; gap: 8px; }
+  html.helm #combatScreen .combat-actions button { font-size: .75rem; padding: 9px; }
+  .combat-stage { padding: 18px 16px; }
+  html.helm #combatScreen .arena-characters { min-height: 180px; margin-top: 12px; }
+  html.helm #combatScreen .fighter { max-width: 145px; }
+  html.helm .combat-result { padding-top: 18px; }
+}

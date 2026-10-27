@@ -110,12 +110,13 @@ function inject(html) {
  const block = '\n<!-- HELM START -->\n'
   + `<style id="helm-fonts">${fontsCss()}</style>\n`
   + `<style id="helm-assets-css">${assets.css}</style>\n`
-  + `<style id="helm-style">\n${read('helm.css')}\n</style>\n`
+  + `<style id="helm-style">\n${read('helm.css')}\n${read('../combat.css')}\n${read('../teacher-dashboard.css')}\n${read('../arcade.css')}\n${read('../command-deck-modern.css')}\n${read('../navigation.css')}\n${read('../loading.css')}\n</style>\n`
   + iconSprite() + '\n'
   + `<script id="helm-assets">window.HELM_ASSETS=${JSON.stringify({ planets: assets.planets, logo: logo ? logo[1] : '' })};</script>\n`
   + `<script id="helm-audio">\n${read('helm-audio.js')}\n</script>\n`
   + `<script id="helm-table">\n${read('helm-table.js')}\n</script>\n`
   + `<script id="helm-accounts">\n${read('helm-accounts.js')}\n</script>\n`
+  + `<script id="helm-loading">\n${read('../loading.js')}\n</script>\n`
   + `<script id="helm-ui">\n${read('helm-ui.js')}\n</script>\n`
   + '<!-- HELM END -->\n';
  return html.replace(/<\/body>/, block + '</body>');
