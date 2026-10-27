@@ -1,0 +1,45 @@
+body.command-deck {--learn-scale:1;}
+body.command-deck .learn-path {margin:0 0 24px;padding:20px;border:1px solid #b6c8b739;background:linear-gradient(120deg,#233438cf,#111e27e6);}
+body.command-deck .learn-path h2 {font-size:24px;margin:8px 0 16px;}
+.learn-path-cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+body.command-deck .learn-path-cards button {display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px;background:#15232c!important;border:1px solid #b6c8b744!important;color:#e8eee0;white-space:normal;text-align:left;}
+.learn-path-cards strong {font-size:15px;}.learn-path-evidence {font:11px/1.5 monospace;color:#f4d44d;}
+body.command-deck .learning-workbench,body.command-deck .learn-trace {padding:15px;margin:12px 0;border:1px solid #abc6b638;background:#101c24!important;border-radius:2px;}
+.learning-workbench h3 {margin:7px 0;font-size:24px;}
+.learning-workbench p,.learn-trace p {line-height:1.6;font-size:calc(13px * var(--learn-scale));}
+.learning-workbench details {margin-top:12px;border-top:1px solid #ffffff21;padding-top:10px;}
+.learning-workbench summary,.command-coach summary {cursor:pointer;line-height:1.6;}
+.learn-buttons {display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;}
+body.command-deck .learn-buttons button,body.command-deck .learn-accessibility button {padding:9px 11px;font-size:12px;background:#283b3c!important;border:1px solid #99b5a744!important;color:#e0e8d8!important;}
+body.command-deck #learnIndependent,body.command-deck #learnStep {background:#f4d44d!important;color:#171914!important;}
+.learn-prediction {display:flex;align-items:end;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.learn-prediction label {display:grid;gap:5px;flex:1;min-width:80px;}
+.learn-prediction input {width:100%;padding:9px;background:#07131a;color:#e9eedf;border:1px solid #ffffff44;}
+.learn-accessibility {display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.learn-accessibility label {font-size:12px;}.learn-accessibility select,.learn-speed select {background:#15282d;color:#e1ebdc;padding:7px;border:1px solid #ffffff36;}
+.learn-speed {font-size:12px;display:block;margin:12px 0;}
+#learnTraceLines {max-height:220px;overflow:auto;padding:5px 0 5px 36px;background:#071219;margin-bottom:0;border:1px solid #ffffff1a;}
+#learnTraceLines li {padding:5px 7px;white-space:pre-wrap;overflow-wrap:anywhere;color:#abbeb3;font:12px/1.6 monospace;border-left:3px solid transparent;}
+#learnTraceLines li.executing {background:#f4d44d23;border-left-color:#f4d44d;color:#fff3af;}
+#learnTraceLines li.executing::marker {content:'▶ ';color:#f4d44d;}
+#learnTraceStatus {min-height:42px;color:#e2e6c9;}
+body.command-deck .app #codeEditor {font-size:calc(14px * var(--learn-scale))!important;}
+body.command-deck .app :is(.muted,.instruction,.status,.learning-workbench summary,.command-coach summary) {font-size:calc(12px * var(--learn-scale))!important;}
+.learn-debrief {border-top:1px solid #f4d44d66;margin:18px 0;padding-top:14px;}
+.learn-debrief h3 {color:#f4d44d;font:20px/1.2 Impact,sans-serif;}.learn-debrief p {font-size:13px!important;}
+.learn-debrief label {display:block;font-size:13px;}
+.learn-debrief textarea {display:block;width:100%;margin:8px 0;background:#08151c;color:#e5eddf;border:1px solid #ffffff40;padding:9px;font:13px/1.5 inherit;}
+body.command-deck .modalbox {max-height:90dvh;overflow:auto;max-width:610px;}
+body.command-deck #learningTeacher {margin-top:24px;padding:22px;background:#102029e8!important;}
+.learning-table-wrap {overflow-x:auto;margin:18px 0;}
+.learning-table {width:100%;border-collapse:collapse;font-size:12px;line-height:1.6;text-align:left;}
+.learning-table th {color:#f4d44d;background:#1d3033;padding:12px;border-bottom:1px solid #b3c2a63d;}
+.learning-table td {padding:12px;vertical-align:top;border-bottom:1px solid #b3c2a625;min-width:125px;}
+.learning-table td:last-child {min-width:220px;}
+.learning-table td strong {color:#e0ebd9;display:block;}
+body.command-deck.learn-focus .app {background:#10181d!important;}
+body.command-deck.learn-focus .app :is(canvas,.immersive-drone-panel,.holo-rail-left,.holo-rail-right,.footer,.ref-mission-overview .info) {display:none!important;}
+body.command-deck.learn-focus .app *,body.command-deck.learn-focus .app *::before,body.command-deck.learn-focus .app *::after {animation:none!important;transition:none!important;}
+body.command-deck.learn-focus .app .holo-board-shell {transform:none!important;}
+body.command-deck.learn-focus .app #board {transform:none!important;box-shadow:none!important;}
+@media(max-width:720px){.learn-path-cards {grid-template-columns:1fr;}.learn-path-cards button {padding:12px!important;}.learning-workbench,.learn-trace {padding:12px!important;}.learn-buttons button {flex:1 1 120px;}.learn-accessibility {width:100%;}.learning-table {font-size:11px;}body.command-deck #learningTeacher {padding:12px!important;}body.command-deck .learn-path {padding:14px;}}

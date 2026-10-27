@@ -1,0 +1,18 @@
+const assert=require('node:assert/strict'),fs=require('fs');
+assert.ok(fs.existsSync('.qa/learning-evidence.js'),'Learning evidence model must exist');
+const E=require('./learning-evidence.js');
+let data=E.clean(null);assert.equal(Object.keys(data.missions).length,0);
+E.record(data,0,{assistance:1,usedCode:true,concept:true,variant:'base'},1000);
+assert.equal(E.level(data.missions['0']),'With support');
+E.record(data,0,{assistance:0,usedCode:true,concept:true,variant:'base'},2000);
+assert.equal(E.level(data.missions['0']),'Independent practice');
+E.record(data,0,{assistance:0,usedCode:true,concept:true,variant:'transfer'},3000);
+assert.equal(E.level(data.missions['0']),'Transfer demonstrated');
+E.record(data,0,{assistance:0,usedCode:true,concept:true,variant:'retention'},4000);
+assert.equal(data.missions['0'].retained,0,'Immediate replay is not retention');
+E.record(data,0,{assistance:0,usedCode:true,concept:true,variant:'retention'},3000+E.REVIEW_DELAY);
+assert.equal(data.missions['0'].retained,1);
+const bad=E.clean({missions:{0:{independent:Infinity,hints:-8,reflection:'x'.repeat(1000)},99:{completed:20},'__proto__':{}}});
+assert.equal(bad.missions['0'].independent,0);assert.equal(bad.missions['0'].hints,0);assert.equal(bad.missions['0'].reflection.length,280);assert.equal(bad.missions['99'],undefined);
+const before=data.missions['0'].independent;E.record(data,0,{assistance:0,usedCode:false,concept:false,variant:'base'},5000);assert.equal(data.missions['0'].independent,before);
+console.log('PASS: support, independent evidence, transfer, delayed retention, input validation.');

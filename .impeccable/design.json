@@ -1,0 +1,700 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T14:47:40.661Z",
+  "title": "Design System: CodeBreakers",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "canonical": "oklch(13.9% 0.008 255.5)",
+        "tonalRamp": [
+          "#090b0e",
+          "#232529",
+          "#3f4246",
+          "#5e6166",
+          "#7f8387",
+          "#a2a5aa",
+          "#c6c9ce",
+          "#ebeff4"
+        ]
+      },
+      "hull": {
+        "role": "neutral",
+        "displayName": "Hull",
+        "canonical": "oklch(17.6% 0.012 254.1)",
+        "tonalRamp": [
+          "#080b10",
+          "#21252b",
+          "#3e4349",
+          "#5d6268",
+          "#7d838a",
+          "#a0a5ad",
+          "#c4cad1",
+          "#e9eff7"
+        ]
+      },
+      "hull-2": {
+        "role": "neutral",
+        "displayName": "Hull Raised",
+        "canonical": "oklch(21.1% 0.017 252.5)",
+        "tonalRamp": [
+          "#060c12",
+          "#1f262d",
+          "#3c434b",
+          "#5b626b",
+          "#7b838c",
+          "#9ea6af",
+          "#c2cad4",
+          "#e7effa"
+        ]
+      },
+      "hull-3": {
+        "role": "neutral",
+        "displayName": "Hull Control",
+        "canonical": "oklch(25.2% 0.021 251.6)",
+        "tonalRamp": [
+          "#050c14",
+          "#1e262f",
+          "#3a434d",
+          "#59626d",
+          "#7a838f",
+          "#9ca6b2",
+          "#c0cad7",
+          "#e5f0fc"
+        ]
+      },
+      "hull-4": {
+        "role": "neutral",
+        "displayName": "Hull Hover",
+        "canonical": "oklch(29.3% 0.024 251.1)",
+        "tonalRamp": [
+          "#040c15",
+          "#1c2631",
+          "#39434f",
+          "#57636f",
+          "#788491",
+          "#9aa6b4",
+          "#becbd9",
+          "#e3f0ff"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(30.4% 0.023 248.6)",
+        "tonalRamp": [
+          "#040c14",
+          "#1c2630",
+          "#39434e",
+          "#57636e",
+          "#788490",
+          "#9aa6b3",
+          "#becbd8",
+          "#e3f0fe"
+        ]
+      },
+      "line-2": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "oklch(37.4% 0.027 250.6)",
+        "tonalRamp": [
+          "#040c16",
+          "#1b2632",
+          "#374350",
+          "#566371",
+          "#768493",
+          "#99a7b6",
+          "#bccbdb",
+          "#e3f0ff"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Console White",
+        "canonical": "oklch(95.0% 0.004 236.5)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#232527",
+          "#404244",
+          "#5f6263",
+          "#808384",
+          "#a2a5a7",
+          "#c7cacc",
+          "#eceff1"
+        ]
+      },
+      "text-2": {
+        "role": "neutral",
+        "displayName": "Readout Grey",
+        "canonical": "oklch(79.6% 0.016 241.8)",
+        "tonalRamp": [
+          "#060c11",
+          "#1e262c",
+          "#3b434a",
+          "#5a636a",
+          "#7a848b",
+          "#9da6ae",
+          "#c1cbd3",
+          "#e6f0f8"
+        ]
+      },
+      "text-3": {
+        "role": "neutral",
+        "displayName": "Caption Grey",
+        "canonical": "oklch(67.7% 0.020 243.1)",
+        "tonalRamp": [
+          "#050c13",
+          "#1d262e",
+          "#39444c",
+          "#58636c",
+          "#78848e",
+          "#9ba7b1",
+          "#becbd6",
+          "#e3f0fb"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(14.9% 0.004 106.9)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252523",
+          "#424240",
+          "#61615f",
+          "#828280",
+          "#a5a5a2",
+          "#c9c9c6",
+          "#efefeb"
+        ]
+      },
+      "hazard": {
+        "role": "primary",
+        "displayName": "Hazard Yellow",
+        "canonical": "oklch(87.7% 0.174 92.5)",
+        "tonalRamp": [
+          "#110a00",
+          "#2f2400",
+          "#514000",
+          "#765f00",
+          "#9d7f00",
+          "#c5a100",
+          "#f0c500",
+          "#ffeeb8"
+        ]
+      },
+      "hazard-2": {
+        "role": "primary",
+        "displayName": "Hazard Light",
+        "canonical": "oklch(91.0% 0.144 95.1)",
+        "tonalRamp": [
+          "#100b00",
+          "#2e2400",
+          "#4f4100",
+          "#736000",
+          "#9a8000",
+          "#c1a315",
+          "#e6c84b",
+          "#ffefb1"
+        ]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Campaign Amber",
+        "canonical": "oklch(78.5% 0.153 60.3)",
+        "tonalRamp": [
+          "#180600",
+          "#3b1c00",
+          "#643400",
+          "#904e00",
+          "#be6a00",
+          "#e98b2c",
+          "#ffb87c",
+          "#ffeada"
+        ]
+      },
+      "lilac": {
+        "role": "secondary",
+        "displayName": "Arcade Lilac",
+        "canonical": "oklch(76.7% 0.107 310.7)",
+        "tonalRamp": [
+          "#160024",
+          "#350e4a",
+          "#542e6b",
+          "#744e8e",
+          "#976fb2",
+          "#ba92d7",
+          "#dfb6fd",
+          "#f5e9ff"
+        ]
+      },
+      "coral": {
+        "role": "secondary",
+        "displayName": "Combat Coral",
+        "canonical": "oklch(73.0% 0.167 31.5)",
+        "tonalRamp": [
+          "#210000",
+          "#4c0200",
+          "#7e0c00",
+          "#ac2c19",
+          "#d3523e",
+          "#fc7760",
+          "#ffb3a5",
+          "#ffe9e4"
+        ]
+      },
+      "steel": {
+        "role": "secondary",
+        "displayName": "Teacher Steel",
+        "canonical": "oklch(75.6% 0.072 249.4)",
+        "tonalRamp": [
+          "#000b1f",
+          "#012646",
+          "#214467",
+          "#406488",
+          "#6186ac",
+          "#82a9d1",
+          "#a6cef7",
+          "#e2f0ff"
+        ]
+      },
+      "holo": {
+        "role": "tertiary",
+        "displayName": "Hologram Blue",
+        "canonical": "oklch(84.1% 0.101 228.2)",
+        "tonalRamp": [
+          "#000e16",
+          "#002a39",
+          "#004961",
+          "#006b8c",
+          "#308eb2",
+          "#58b1d7",
+          "#7dd6fd",
+          "#daf3ff"
+        ]
+      },
+      "holo-2": {
+        "role": "tertiary",
+        "displayName": "Hologram Mid",
+        "canonical": "oklch(61.5% 0.097 230.8)",
+        "tonalRamp": [
+          "#000d17",
+          "#00293a",
+          "#004963",
+          "#096a8e",
+          "#3a8cb1",
+          "#60b0d6",
+          "#85d5fd",
+          "#dbf3ff"
+        ]
+      },
+      "holo-3": {
+        "role": "tertiary",
+        "displayName": "Hologram Deep",
+        "canonical": "oklch(33.1% 0.051 233.7)",
+        "tonalRamp": [
+          "#000d18",
+          "#04293a",
+          "#244759",
+          "#43667a",
+          "#64889d",
+          "#86abc0",
+          "#a9d0e6",
+          "#ddf2ff"
+        ]
+      },
+      "ok": {
+        "role": "status",
+        "displayName": "Signal Green",
+        "canonical": "oklch(82.5% 0.145 159.1)",
+        "tonalRamp": [
+          "#001005",
+          "#002e1a",
+          "#005030",
+          "#007449",
+          "#009b63",
+          "#3bc083",
+          "#67e6a7",
+          "#c3ffdc"
+        ]
+      },
+      "danger": {
+        "role": "status",
+        "displayName": "Alarm Red",
+        "canonical": "oklch(68.9% 0.201 28.6)",
+        "tonalRamp": [
+          "#210000",
+          "#4e0000",
+          "#810002",
+          "#b80207",
+          "#e13f33",
+          "#ff7363",
+          "#ffb3a8",
+          "#ffe9e5"
+        ]
+      },
+      "danger-ink": {
+        "role": "status",
+        "displayName": "Alarm Ink",
+        "canonical": "oklch(90.1% 0.052 27.0)",
+        "tonalRamp": [
+          "#1c0202",
+          "#3a1a17",
+          "#5b3733",
+          "#7c5651",
+          "#9f7772",
+          "#c39994",
+          "#e9bdb7",
+          "#ffe9e6"
+        ]
+      },
+      "code-well": {
+        "role": "neutral",
+        "displayName": "Code Well",
+        "canonical": "oklch(13.3% 0.008 254.4)",
+        "tonalRamp": [
+          "#090b0f",
+          "#222529",
+          "#3f4246",
+          "#5e6266",
+          "#7f8387",
+          "#a1a5aa",
+          "#c6cacf",
+          "#ebeff4"
+        ]
+      },
+      "code-ink": {
+        "role": "neutral",
+        "displayName": "Code Ink",
+        "canonical": "oklch(94.3% 0.033 231.2)",
+        "tonalRamp": [
+          "#000d17",
+          "#132832",
+          "#304651",
+          "#4e6571",
+          "#6f8693",
+          "#91a9b6",
+          "#b4cedb",
+          "#dcf3ff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Screen title in the screen head; always uppercase. 2rem on phones; mission and arcade titles 2.25rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "World name on the sector plate and dialog titles; uppercase."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Panel titles, roster mode names, arcade task names; uppercase."
+      },
+      "console": {
+        "displayName": "Console",
+        "purpose": "Rail items, teacher tabs and briefing summaries; uppercase."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Hazard slabs: Deploy at 1.375rem, Next mission at 1.125rem; uppercase."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Every count, score and index, tabular, in a fixed cell or row slot."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, instructions and coach text, 62 to 70ch; sentence case."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Button labels in sentence case."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Readout captions, table headers, field names and row state words; uppercase."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Editor, queue, trace, compiler feedback and combat answers."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hairline",
+        "value": "inset 0 0 0 1px var(--line)",
+        "purpose": "Edge of every panel, plate and readout cell; survives the chamfer clip."
+      },
+      {
+        "name": "hairline-strong",
+        "value": "inset 0 0 0 1px var(--line-2)",
+        "purpose": "Dialogs and compiler feedback."
+      },
+      {
+        "name": "board-rim",
+        "value": "inset 0 0 0 1px var(--holo-3)",
+        "purpose": "Mission board frame."
+      },
+      {
+        "name": "status-rim",
+        "value": "inset 0 0 0 1px color-mix(in srgb, var(--holo) 30%, transparent)",
+        "purpose": "Status line edge; switches to a 55% danger rim on error."
+      },
+      {
+        "name": "dialog-lift",
+        "value": "inset 0 0 0 1px var(--line-2), 0 30px 80px rgba(0,0,0,.55)",
+        "purpose": "Dialogs over the flat rgba(4,6,9,.8) scrim; no backdrop blur."
+      },
+      {
+        "name": "sheet-lift",
+        "value": "inset 0 0 0 1px var(--line-2), 0 20px 50px rgba(0,0,0,.5)",
+        "purpose": "Phone More sheet above the bottom bar."
+      },
+      {
+        "name": "agent-glow",
+        "value": "0 0 0 1px var(--holo), 0 0 22px rgba(127,216,255,.25)",
+        "purpose": "The agent tile; one of the only two glows in the system."
+      },
+      {
+        "name": "goal-glow",
+        "value": "inset 0 0 18px rgba(127,216,255,.18)",
+        "purpose": "The goal tile."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.2,.8,.2,1)",
+        "purpose": "Every CSS transition and keyframe in the shell."
+      },
+      {
+        "name": "state",
+        "value": "150ms",
+        "purpose": "Background, border and colour changes on controls; disclosure chevron rotation."
+      },
+      {
+        "name": "press",
+        "value": "120ms translateY(1px)",
+        "purpose": "Button press."
+      },
+      {
+        "name": "area-swap",
+        "value": "300ms",
+        "purpose": "Rail brand and spine changing area colour between screens."
+      },
+      {
+        "name": "piece-arrive",
+        "value": "160ms scale(.86) to 1",
+        "purpose": "Agent render settling on its new tile."
+      },
+      {
+        "name": "hit",
+        "value": "320ms horizontal shake",
+        "purpose": "Combat fighter taking a hit."
+      },
+      {
+        "name": "table-turn",
+        "value": "720ms cubic ease-out (1 - (1 - t)^3)",
+        "purpose": "War table turning the chosen world forward; selected planet scales .5 to .64. The one long move."
+      },
+      {
+        "name": "reduced",
+        "value": "0.001ms",
+        "purpose": "prefers-reduced-motion or the in-game Reduce motion toggle: all transitions and animations instant; the table stops its ambient bob and sweep and turns instantly."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-rail",
+        "value": "1279px"
+      },
+      {
+        "name": "single-column",
+        "value": "1180px"
+      },
+      {
+        "name": "phone-bar",
+        "value": "899px"
+      },
+      {
+        "name": "narrow",
+        "value": "420px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hazard Primary Button",
+      "kind": "button",
+      "refersTo": "button-hazard",
+      "description": "The one pressable primary action in a region (Compile and run, Export, Next mission). Disabled drops the yellow.",
+      "html": "<div class=\"ds-row\"><button class=\"ds-btn-hazard\"><svg class=\"ds-ico\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 4v16l13 -8l-13 -8\"/></svg><span>Compile and run</span></button><button class=\"ds-btn-hazard\" disabled><svg class=\"ds-ico\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 4v16l13 -8l-13 -8\"/></svg><span>Compile and run</span></button></div>",
+      "css": ".ds-row{display:flex;gap:8px;flex-wrap:wrap}.ds-ico{flex:none;width:1.15em;height:1.15em}.ds-btn-hazard{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 18px;border-radius:999px;font:600 .9375rem/1 var(--f-body,'Barlow',system-ui,sans-serif);letter-spacing:.01em;cursor:pointer;white-space:nowrap;transition:background-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),border-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),transform .12s var(--ease,cubic-bezier(.2,.8,.2,1));background:var(--hazard,#ffd21f);border:1px solid var(--hazard,#ffd21f);color:var(--ink,#0b0b09)}.ds-btn-hazard:hover:not(:disabled){background:var(--hazard-2,#ffe066);border-color:var(--hazard-2,#ffe066)}.ds-btn-hazard:active:not(:disabled){transform:translateY(1px)}.ds-btn-hazard:focus-visible{outline:2px solid var(--holo,#7fd8ff);outline-offset:3px}.ds-btn-hazard:disabled{background:var(--hull-3,#1b232c);border-color:var(--line-2,#36424f);color:var(--text-3,#8d99a3);opacity:.38;cursor:not-allowed}"
+    },
+    {
+      "name": "Console Button",
+      "kind": "button",
+      "refersTo": "button-console",
+      "description": "Default pill control for every secondary action; flat, no glow, 1px press.",
+      "html": "<div class=\"ds-row\"><button class=\"ds-btn-console\"><svg class=\"ds-ico\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3\"/><path d=\"M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3\"/></svg><span>Step</span></button><button class=\"ds-btn-console ds-ghost\"><span>Syntax</span></button></div>",
+      "css": ".ds-row{display:flex;gap:8px;flex-wrap:wrap}.ds-ico{flex:none;width:1.15em;height:1.15em}.ds-btn-console{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 18px;border-radius:999px;font:600 .9375rem/1 var(--f-body,'Barlow',system-ui,sans-serif);letter-spacing:.01em;cursor:pointer;white-space:nowrap;transition:background-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),border-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),transform .12s var(--ease,cubic-bezier(.2,.8,.2,1));background:var(--hull-3,#1b232c);border:1px solid var(--line-2,#36424f);color:var(--text,#eceff1)}.ds-btn-console:hover{background:var(--hull-4,#232d38);border-color:var(--text-3,#8d99a3)}.ds-btn-console:active{transform:translateY(1px)}.ds-btn-console:focus-visible{outline:2px solid var(--holo,#7fd8ff);outline-offset:3px}.ds-btn-console.ds-ghost{background:transparent}.ds-btn-console.ds-ghost:hover{background:var(--hull-4,#232d38)}"
+    },
+    {
+      "name": "Warn Ghost Button",
+      "kind": "button",
+      "refersTo": "button-warn",
+      "description": "Destructive or reset action: transparent pill with an Alarm Red edge.",
+      "html": "<button class=\"ds-btn-warn\"><svg class=\"ds-ico\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4\"/><path d=\"M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4\"/></svg><span>Reset</span></button>",
+      "css": ".ds-ico{flex:none;width:1.15em;height:1.15em}.ds-btn-warn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 18px;border-radius:999px;font:600 .9375rem/1 var(--f-body,'Barlow',system-ui,sans-serif);letter-spacing:.01em;cursor:pointer;white-space:nowrap;transition:background-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),border-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),transform .12s var(--ease,cubic-bezier(.2,.8,.2,1));background:transparent;border:1px solid color-mix(in srgb,var(--danger,#ff5c4d) 55%,transparent);color:#ffb2a8}.ds-btn-warn:hover{background:color-mix(in srgb,var(--danger,#ff5c4d) 14%,transparent);border-color:var(--danger,#ff5c4d)}.ds-btn-warn:active{transform:translateY(1px)}.ds-btn-warn:focus-visible{outline:2px solid var(--holo,#7fd8ff);outline-offset:3px}"
+    },
+    {
+      "name": "Deploy Slab",
+      "kind": "custom",
+      "refersTo": "button-deploy",
+      "description": "The deck primary: full-width hazard slab with the target mission at right and a faint 45-degree stripe.",
+      "html": "<button class=\"ds-deploy\"><svg class=\"ds-ico\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3\"/><path d=\"M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3\"/><path d=\"M14 9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\"/></svg><span class=\"ds-deploy-word\">Deploy</span><small>01 · Boot Sequence</small></button>",
+      "css": ".ds-deploy{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;max-width:340px;min-height:64px;padding:0 22px;border:1px solid var(--hazard,#ffd21f);border-radius:4px;background:var(--hazard,#ffd21f) repeating-linear-gradient(-45deg,transparent 0 10px,rgba(0,0,0,.09) 10px 20px);color:var(--ink,#0b0b09);font:700 1.375rem/1 var(--f-display,'Antonio','Barlow',system-ui,sans-serif);text-transform:uppercase;letter-spacing:.06em;cursor:pointer;transition:background-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),transform .12s var(--ease,cubic-bezier(.2,.8,.2,1))}.ds-deploy .ds-ico{width:22px;height:22px}.ds-deploy small{font:600 .8125rem/1.2 var(--f-body,'Barlow',system-ui,sans-serif);letter-spacing:0;text-transform:none;opacity:.8;text-align:right}.ds-deploy:hover{background-color:var(--hazard-2,#ffe066)}.ds-deploy:active{transform:translateY(1px)}.ds-deploy:focus-visible{outline:2px solid var(--holo,#7fd8ff);outline-offset:3px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "44px field on Hull with a 6px corner; focus turns the border Hologram Blue.",
+      "html": "<label class=\"ds-field\"><span>Pilot name</span><input type=\"text\" placeholder=\"Explorer\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;max-width:320px}.ds-field span{font:600 .75rem/1 var(--f-body,'Barlow',system-ui,sans-serif);text-transform:uppercase;letter-spacing:.09em;color:var(--text-3,#8d99a3)}.ds-field input{min-height:44px;padding:0 12px;border:1px solid var(--line-2,#36424f);border-radius:6px;background:var(--hull,#0d1116);color:var(--text,#eceff1);font:500 1rem/1.3 var(--f-body,'Barlow',system-ui,sans-serif);transition:border-color .15s var(--ease,cubic-bezier(.2,.8,.2,1))}.ds-field input::placeholder{color:var(--text-3,#8d99a3)}.ds-field input:hover{border-color:var(--text-3,#8d99a3)}.ds-field input:focus{outline:none;border-color:var(--holo,#7fd8ff)}.ds-field input:focus-visible{outline:2px solid var(--holo,#7fd8ff);outline-offset:3px;border-color:var(--holo,#7fd8ff)}"
+    },
+    {
+      "name": "Console Rail",
+      "kind": "nav",
+      "refersTo": "rail-item",
+      "description": "Half-pill area items on the rail; the current item fills its own area colour with Ink.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Main\"><button class=\"ds-rail-item\" aria-current=\"page\" style=\"--item-area:var(--amber,#ff9f45)\"><svg class=\"ds-ico\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18.816 13.58c2.292 2.138 3.546 4 3.092 4.9c-.745 1.46 -5.783 -.259 -11.255 -3.838c-5.47 -3.579 -9.304 -7.664 -8.56 -9.123c.464 -.91 2.926 -.444 5.803 .805\"/><path d=\"M5 12a7 7 0 1 0 14 0a7 7 0 1 0 -14 0\"/></svg><span>Deck</span></button><button class=\"ds-rail-item\" style=\"--item-area:var(--lilac,#c9a0e6)\"><svg class=\"ds-ico\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5h3.5a5 5 0 0 1 0 10h-5.5l-4.015 4.227a2.3 2.3 0 0 1 -3.923 -2.035l1.634 -8.173a5 5 0 0 1 4.904 -4.019h3.4\"/><path d=\"M14 15l4.07 4.284a2.3 2.3 0 0 0 3.925 -2.023l-1.6 -8.232\"/><path d=\"M8 9v2\"/><path d=\"M7 10h2\"/><path d=\"M14 10h2\"/></svg><span>Arcade</span></button></nav>",
+      "css": ".ds-rail{display:grid;gap:6px;width:216px;padding:12px 10px 12px 16px;background:var(--ground,#07090c)}.ds-rail-item{display:flex;align-items:center;gap:8px;width:100%;min-height:48px;padding:0 16px;border:0;border-radius:999px 6px 6px 999px;background:var(--hull-2,#131920);color:var(--text-2,#b4bec6);font:600 1rem/1 var(--f-display,'Antonio','Barlow',system-ui,sans-serif);text-transform:uppercase;letter-spacing:.06em;cursor:pointer;transition:background-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),color .15s var(--ease,cubic-bezier(.2,.8,.2,1))}.ds-rail-item .ds-ico{width:20px;height:20px;color:var(--text-3,#8d99a3)}.ds-rail-item:hover{background:var(--hull-3,#1b232c);color:var(--text,#eceff1)}.ds-rail-item:focus-visible{outline:2px solid var(--holo,#7fd8ff);outline-offset:3px}.ds-rail-item[aria-current=\"page\"],.ds-rail-item[aria-current=\"page\"]:hover{background:var(--item-area);color:var(--ink,#0b0b09)}.ds-rail-item[aria-current=\"page\"] .ds-ico{color:var(--ink,#0b0b09)}"
+    },
+    {
+      "name": "Segmented Filter",
+      "kind": "chip",
+      "refersTo": "filter-segment-active",
+      "description": "Pill segments joined at 2px; the pressed segment fills the area colour (lilac in the arcade).",
+      "html": "<div class=\"ds-seg\" role=\"group\" aria-label=\"Filter\"><button aria-pressed=\"true\">All modes</button><button aria-pressed=\"false\">In progress</button><button aria-pressed=\"false\">Completed</button></div>",
+      "css": ".ds-seg{display:flex;gap:2px}.ds-seg button{min-height:40px;padding:0 18px;border:1px solid var(--line,#26303a);border-radius:0;background:var(--hull,#0d1116);color:var(--text,#eceff1);font:600 .9375rem/1 var(--f-body,'Barlow',system-ui,sans-serif);cursor:pointer;transition:background-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),border-color .15s var(--ease,cubic-bezier(.2,.8,.2,1))}.ds-seg button:first-child{border-radius:999px 0 0 999px}.ds-seg button:last-child{border-radius:0 999px 999px 0}.ds-seg button:hover{background:var(--hull-4,#232d38);border-color:var(--text-3,#8d99a3)}.ds-seg button:focus-visible{outline:2px solid var(--holo,#7fd8ff);outline-offset:3px}.ds-seg button[aria-pressed=\"true\"]{background:var(--lilac,#c9a0e6);border-color:var(--lilac,#c9a0e6);color:var(--ink,#0b0b09)}"
+    },
+    {
+      "name": "Readout Cells",
+      "kind": "custom",
+      "refersTo": "readout-cell",
+      "description": "Joined strip of fixed cells in the screen head: tabular Antonio value with a small caption naming the quantity.",
+      "html": "<div class=\"ds-cells\"><div class=\"ds-cell\"><b>3 / 15</b><span>Missions solved</span></div><div class=\"ds-cell\"><b>240</b><span>Experience</span></div><div class=\"ds-cell\"><b>4</b><span>Best streak</span></div></div>",
+      "css": ".ds-cells{display:flex;gap:2px;flex-wrap:wrap}.ds-cell{min-width:104px;padding:10px 16px;display:flex;flex-direction:column-reverse;gap:6px;background:var(--hull,#0d1116);box-shadow:inset 0 0 0 1px var(--line,#26303a)}.ds-cell:first-child{border-radius:999px 0 0 999px;padding-left:22px}.ds-cell:last-child{border-radius:0 999px 999px 0;padding-right:22px}.ds-cell b{font:600 1.375rem/1 var(--f-display,'Antonio','Barlow',system-ui,sans-serif);font-variant-numeric:tabular-nums;letter-spacing:.02em;color:var(--text,#eceff1)}.ds-cell span{font:600 .6875rem/1 var(--f-body,'Barlow',system-ui,sans-serif);text-transform:uppercase;letter-spacing:.09em;color:var(--text-3,#8d99a3)}"
+    },
+    {
+      "name": "Mission Row",
+      "kind": "custom",
+      "refersTo": "mission-row",
+      "description": "Index, name with topic, and a state word; selection takes the area edge and a 12% wash.",
+      "html": "<div class=\"ds-rows\"><button class=\"ds-mrow\" aria-pressed=\"true\"><span class=\"ds-mrow-num\">01</span><span class=\"ds-mrow-body\"><b>Boot Sequence</b><small>Sequential commands</small></span><span class=\"ds-mrow-state ds-fresh\">Next up</span></button><button class=\"ds-mrow\" aria-pressed=\"false\"><span class=\"ds-mrow-num\">02</span><span class=\"ds-mrow-body\"><b>Firewall Corridor</b><small>Paths and phishing</small></span><span class=\"ds-mrow-state ds-solved\">Solved</span></button></div>",
+      "css": ".ds-rows{display:grid;gap:6px;max-width:340px}.ds-mrow{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;width:100%;min-height:56px;padding:10px 14px;border:1px solid transparent;border-radius:4px;background:var(--hull-2,#131920);color:var(--text,#eceff1);text-align:left;cursor:pointer;transition:background-color .15s var(--ease,cubic-bezier(.2,.8,.2,1)),border-color .15s var(--ease,cubic-bezier(.2,.8,.2,1))}.ds-mrow:hover{background:var(--hull-3,#1b232c);border-color:var(--line-2,#36424f)}.ds-mrow:focus-visible{outline:2px solid var(--holo,#7fd8ff);outline-offset:3px}.ds-mrow[aria-pressed=\"true\"]{background:color-mix(in srgb,var(--amber,#ff9f45) 12%,var(--hull-2,#131920));border-color:var(--amber,#ff9f45)}.ds-mrow-num{font:600 1.5rem/1 var(--f-display,'Antonio','Barlow',system-ui,sans-serif);font-variant-numeric:tabular-nums;color:var(--text-3,#8d99a3)}.ds-mrow[aria-pressed=\"true\"] .ds-mrow-num{color:var(--amber,#ff9f45)}.ds-mrow-body b{display:block;font:600 1rem/1.2 var(--f-body,'Barlow',system-ui,sans-serif)}.ds-mrow-body small{display:block;margin-top:3px;font:400 .8125rem/1.3 var(--f-body,'Barlow',system-ui,sans-serif);color:var(--text-3,#8d99a3)}.ds-mrow-state{font:600 .75rem/1.2 var(--f-body,'Barlow',system-ui,sans-serif);text-transform:uppercase;letter-spacing:.06em;color:var(--text-3,#8d99a3)}.ds-solved{color:var(--ok,#63e2a3)}.ds-fresh{color:var(--amber,#ff9f45)}"
+    },
+    {
+      "name": "Sector Plate",
+      "kind": "card",
+      "refersTo": "tactical-plate",
+      "description": "Chamfered tactical plate: world name, index, note, and the counted liberation meter.",
+      "html": "<section class=\"ds-plate\"><h2>Logic Labyrinth</h2><span class=\"ds-index\">World 01 of 05</span><p>Build your first algorithms and navigate digital mazes.</p><div class=\"ds-lib\" role=\"img\" aria-label=\"1 of 3 missions solved\"><i class=\"on\"></i><i></i><i></i><span>1 / 3 solved</span></div></section>",
+      "css": ".ds-plate{max-width:372px;display:flex;flex-direction:column;gap:14px;padding:22px 20px 20px;background:var(--hull,#0d1116);box-shadow:inset 0 0 0 1px var(--line,#26303a);clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}.ds-plate h2{margin:0;font:600 1.875rem/1.05 var(--f-display,'Antonio','Barlow',system-ui,sans-serif);text-transform:uppercase;letter-spacing:.01em;color:var(--text,#eceff1)}.ds-index{margin-top:-8px;font:600 .8125rem/1 var(--f-body,'Barlow',system-ui,sans-serif);text-transform:uppercase;letter-spacing:.06em;font-variant-numeric:tabular-nums;color:var(--amber,#ff9f45)}.ds-plate p{margin:0;font:400 1rem/1.5 var(--f-body,'Barlow',system-ui,sans-serif);color:var(--text-2,#b4bec6)}.ds-lib{display:flex;align-items:center;gap:4px}.ds-lib i{display:block;width:34px;height:8px;background:var(--line-2,#36424f);transform:skewX(-30deg)}.ds-lib i.on{background:var(--amber,#ff9f45)}.ds-lib span{margin-left:10px;font:600 .875rem/1 var(--f-body,'Barlow',system-ui,sans-serif);font-variant-numeric:tabular-nums;color:var(--text-2,#b4bec6)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Galactic War Table",
+    "overview": "The whole game is one console on a starship bridge. A hull off-black room, gunmetal plates and a console rail of warm colour-block elbows frame a single lit object: the holo war table, a real-time WebGL disc carrying five Blender-rendered planets. The mission grid is that same table zoomed in, so the board, the route trace and the status line share its hologram blue, and nothing else in the room glows. Chrome stays flat, dark and quiet so the student's code and the board are always the brightest things on screen.\n\nDensity is a working console, not a poster: 40 to 64px controls, real numbers in fixed readout cells, list rows instead of card grids, and every panel either squared or chamfered against the dark. Colour does three separate jobs and never trades them: the area colour says where you are, hazard yellow says what to press, hologram blue says this is the table. Motion is short and mechanical; the one long move is the table turning a world forward, and reduced motion makes all of it instant.\n\nThe world takes its cues from bridge consoles and drop-pod tactical screens but borrows no franchise logos, names, fonts or assets. It rejects the stacked glowing-button space menu, grids of identical mode cards, and glass panels.",
+    "keyCharacteristics": [
+      "Hull off-black ground with four tonal hull steps and 1px inset hairlines; no decorative gradients in chrome.",
+      "One lit object: the holo war table and the mission board that is its zoomed-in view.",
+      "Colour jobs split three ways: area colour for wayfinding, hazard yellow for pressing, hologram blue for the table.",
+      "Three geometries: 45-degree chamfered plates, pill and elbow console controls, 4px machined slabs.",
+      "Antonio condensed caps for the console's voice, Barlow for reading, JetBrains Mono for code, tabular numerals in fixed cells.",
+      "Blender renders for every planet, piece, mode emblem and fighter; Tabler outline icons at 2px stroke; no emoji.",
+      "Short mechanical motion that goes instant under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The Hazard Means Press Rule",
+        "body": "Hazard yellow fills only something you can press that moves you forward, one per region. It never decorates, never marks a secondary action and never survives on a disabled control.",
+        "section": "colors"
+      },
+      {
+        "name": "The Table Owns the Blue Rule",
+        "body": "Hologram blue belongs to the war table, the planets, the mission board, the route trace and the status line, plus the focus ring. The rail, panels, headings and resting buttons never take it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wayfinding Only Rule",
+        "body": "An area colour tells you where you are and what is selected inside that area. It never fills a primary action and never appears in another area's chrome.",
+        "section": "colors"
+      },
+      {
+        "name": "The Console Voice Rule",
+        "body": "Antonio is always uppercase and only for what the console names: titles, rail items, action words and numerals. Sentences are Barlow in sentence case.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fixed Cell Rule",
+        "body": "Every number that changes sets in tabular numerals in a fixed cell or row slot, so a ticking score never shifts its neighbours.",
+        "section": "typography"
+      },
+      {
+        "name": "The Code Is Mono Rule",
+        "body": "Code, the move queue, the trace, compiler feedback and combat answer options set in JetBrains Mono; nothing else does.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Edge Rule",
+        "body": "Panels separate by a tonal step and a 1px inset hairline, never by a cast shadow. Shadows belong to things that float over the deck: dialogs and the overflow sheet.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Board Glows Alone Rule",
+        "body": "Glow exists only on the mission board's goal and agent tiles. Chrome never glows.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Three Geometries Rule",
+        "body": "Plates chamfer, console controls pill or elbow, slabs inside a plate take the 4px machined corner. Panels are never softly rounded; there is no 8 to 24px card radius anywhere in the system.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Counted Progress Rule",
+        "body": "A count of missions or challenges is drawn as lit skewed segments with the number printed beside it (\"0 / 3 solved\"), never as an unlabelled smooth bar.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do open every screen with the screen head: area cap, uppercase Antonio title, one Barlow line, and real numbers in a readout strip.",
+      "Do set one area per screen (Campaign Amber, Arcade Lilac, Combat Coral, Teacher Steel) and let the rail, cap, underline and selection inherit it.",
+      "Do give the one pressable primary action in a region Hazard Yellow (#ffd21f) with Ink text, and drop it to Hull Control with Caption Grey when disabled.",
+      "Do separate panels with a tonal step and a 1px inset hairline (`box-shadow: inset 0 0 0 1px var(--line)`).",
+      "Do chamfer tactical plates at 14px, pill the console controls, and give slabs inside a plate the 4px corner.",
+      "Do count progress in lit skewed segments with the count printed beside them.",
+      "Do pair every status colour with a word: Solved, Next up, Code required, or a plain-language error.",
+      "Do use Blender renders for planets, pieces, mode emblems and fighters, each shipped with its provenance record, and Tabler outline icons at 2px stroke for everything else.",
+      "Do keep motion at 0.3s or less on the cubic-bezier(.2,.8,.2,1) ease, with the 720ms table turn as the one long move, and make all of it instant under reduced motion from the system or the in-game toggle.",
+      "Do hold every text pair at WCAG AA; Caption Grey (#8d99a3) is the lowest text tone allowed on any hull."
+    ],
+    "donts": [
+      "Don't fill or tint the rail, panels, headings or resting buttons with Hologram Blue; it belongs to the table, planets, board, trace, status line and focus ring.",
+      "Don't use an area colour for a primary action, or one area's colour in another area's chrome.",
+      "Don't put Hazard Yellow on anything that cannot be pressed, on secondary buttons, or on disabled controls.",
+      "Don't round panels softly; there is no 8 to 24px card radius.",
+      "Don't add glows, text-shadows, filters or hover lift to chrome; glow belongs to the goal and agent tiles alone.",
+      "Don't use backdrop blur or translucent glass panels; dialogs sit on a flat 80% scrim.",
+      "Don't put kickers or eyebrows above headings; the shell hides them outright.",
+      "Don't use emoji or text glyphs as icons or game pieces; they become Blender sprites or Tabler icons.",
+      "Don't lay modes out as a grid of identical glowing cards; use the roster row.",
+      "Don't set paragraphs in Antonio or in uppercase.",
+      "Don't use franchise logos, names, fonts or copied assets; Star Trek and Helldivers are inspiration only."
+    ]
+  }
+}

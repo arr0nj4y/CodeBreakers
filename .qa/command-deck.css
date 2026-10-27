@@ -1,0 +1,163 @@
+/* Command Deck: the single authoritative presentation layer. */
+:root { --command-yellow:#f4d44d; --command-ink:#101313; --command-paper:#f0f0e5; --command-line:#ffffff26; }
+html:has(body.command-deck),body.command-deck {background:#101313!important;color:var(--command-paper);}
+body.command-deck {font-family:'Segoe UI',Arial,sans-serif;}
+body.command-deck :is(button,select,input,textarea) {border-radius:2px!important;}
+body.command-deck button {text-shadow:none!important;}
+body.command-deck button:focus-visible {outline:2px solid #f4d44d!important;outline-offset:4px;box-shadow:none!important;}
+body.command-deck :is(.screen,.app) {background:radial-gradient(ellipse at 80% 0%,#343b3c66,transparent 65%),#101313!important;}
+body.command-deck .screen::before {opacity:.12!important;filter:grayscale(1);}
+body.command-deck :is(.screen-wrap,.panel,.modalbox,.stellar-dialog,.teacher-panel,.teacher-side,.arc-play,.arc-aside,.coding-lab,.ref-galaxy-info,.ref-galaxy-map,.ref-world-preview,.cb-world-ribbon,.ref-table-panel,.ref-mission-overview,.ref-code-workspace,.holo-deck,.cb-brief-tabs,.cb-coach-panel) {border-radius:3px!important;background-color:#151a1b!important;background-image:none!important;border-color:var(--command-line)!important;box-shadow:0 14px 40px #0003!important;}
+body.command-deck :is(.eyebrow,.hero-eyebrow,.ref-info-eyebrow,.holo-live,.ref-table-header,.cb-board-hud,.celestial-overline,.level-state) {color:#f4d44d!important;}
+body.command-deck :is(h1,h2,h3,.brandmark,.ref-brand-title) {font-family:Impact,'Arial Narrow','Segoe UI',sans-serif;letter-spacing:.035em;text-transform:uppercase;font-weight:800;text-shadow:none!important;}
+body.command-deck :is(.shellbtn,.teacher-nav,.actions button,.code-presets button,.holo-command-btn,.ref-enter-world,.arc-stage-nav button) {background:#252b2b!important;color:#eeeee5!important;border:1px solid #ffffff30!important;box-shadow:none!important;}
+body.command-deck :is(button.primary,.big-primary,.ref-enter-world,.holo-run,#compileRun) {background:#f4d44d!important;color:#171914!important;border-color:#f4d44d!important;box-shadow:none!important;}
+body.command-deck :is(.queue,#status,.question,.instruction,#reference,.manual-drawer,#codeEditor,.cb-brief-panel,.info) {background:#101616!important;border-color:#ffffff26!important;border-radius:2px!important;box-shadow:none!important;}
+body.command-deck :is(.level-card,.world-card,.arc-mode-card,.home-metric,.stat,.campaign-footer,.arc-hero,.cb-arcade-tools) {border-radius:2px!important;background:#1a2020!important;border-color:#ffffff26!important;box-shadow:none!important;}
+body.command-deck :is(.level-card,.world-card,.arc-mode-card):hover:not(:disabled) {border-color:#f4d44d!important;}
+body.command-deck :is(.progress>div,.tiny-progress>div,.mini-progress i) {background:#f4d44d!important;}
+body.command-deck :is(.topbar,.game-navigation,.holo-topline,.holo-mission-text,.holo-turn,.holo-command-dock,.cb-board-hud) {background:#171e1e!important;border-color:#ffffff26!important;border-radius:2px!important;}
+body.command-deck #board {animation:none!important;background:#111b1d!important;border-color:#b8c5bb50!important;}
+body.command-deck #board .tile {border-radius:2px!important;}
+body.command-deck #board .tile.agent {outline-color:#f4d44d!important;}
+body.command-deck .app {border-radius:0!important;}
+body.command-deck :is(.ref-planet-visual,.ref-galaxy-core) {filter:saturate(.55);}
+body.command-deck #menuScreen {padding:0!important;background:#101313!important;}
+body.command-deck #menuScreen::before,body.command-deck #menuScreen::after {display:none!important;}
+body.command-deck #menuScreen .stellar-home-shell {display:grid!important;grid-template-columns:212px minmax(0,1fr)!important;gap:0!important;max-width:1920px!important;padding:0!important;min-height:100dvh!important;}
+body.command-deck #menuScreen .stellar-navigation {width:auto!important;max-width:none!important;position:relative!important;top:0!important;min-height:100dvh!important;padding:36px 18px 22px!important;background:#111515!important;border:0!important;border-right:1px solid #ffffff20!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;}
+body.command-deck #menuScreen .stellar-navigation {margin:0!important;align-self:stretch!important;animation:none!important;transform:none!important;z-index:10!important;isolation:isolate;}
+body.command-deck #menuScreen .stellar-navigation * {filter:none!important;text-shadow:none!important;}
+body.command-deck #menuScreen :is(.bridge-horizon,.immersive-starfield) {display:none!important;}
+body.command-deck #menuScreen .stellar-identity {display:flex!important;align-items:flex-start!important;flex-direction:column!important;padding:0 8px 30px!important;gap:8px!important;text-align:left!important;}
+body.command-deck #menuScreen .stellar-logo-glow {display:none!important;}
+body.command-deck #menuScreen .stellar-game-name {display:block!important;font:23px Impact,'Arial Narrow',sans-serif!important;letter-spacing:.04em!important;color:#f4d44d!important;filter:none!important;text-shadow:none!important;}
+body.command-deck #menuScreen .stellar-subtitle {display:block!important;font:9px monospace!important;color:#949b94!important;letter-spacing:.15em!important;}
+body.command-deck #menuScreen .stellar-menu-links {display:grid!important;grid-template-columns:1fr!important;gap:6px!important;overflow:visible!important;}
+body.command-deck #menuScreen .stellar-nav-btn {display:flex!important;flex-direction:row!important;justify-content:flex-start!important;text-align:left!important;gap:10px!important;width:100%!important;height:48px!important;min-height:48px!important;padding:10px 12px!important;margin:0!important;border:1px solid transparent!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:11px!important;color:#aeb4ad!important;letter-spacing:.06em!important;}
+body.command-deck #menuScreen .stellar-nav-btn span {display:inline!important;}
+body.command-deck #menuScreen .stellar-nav-btn .nav-end {display:none!important;}
+body.command-deck #menuScreen .stellar-nav-btn::before,body.command-deck #menuScreen .stellar-nav-btn::after {display:none!important;}
+body.command-deck #menuScreen .stellar-nav-btn .nav-symbol {color:#a2a99f!important;font-size:16px!important;}
+body.command-deck #menuScreen .stellar-nav-btn.nav-selected {background:#f4d44d!important;color:#171914!important;border-color:#f4d44d!important;}
+body.command-deck #menuScreen .stellar-nav-btn.nav-selected .nav-symbol {color:#171914!important;}
+body.command-deck #menuScreen .stellar-nav-btn:hover {background:#ffffff0d!important;color:#f4d44d!important;transform:none!important;border-color:#f4d44d66!important;}
+body.command-deck #menuScreen .nav-separator {display:block!important;border-color:#ffffff20!important;color:#858d85!important;font:9px monospace!important;margin:22px 8px 12px!important;}
+body.command-deck #menuScreen .sidebar-bottom {display:flex!important;border-color:#ffffff20!important;color:#a4aaa0!important;padding:18px 6px 0!important;font:9px monospace!important;}
+body.command-deck #menuScreen .stellar-home-main {border:0!important;border-radius:0!important;overflow:hidden!important;background:#101313!important;}
+body.command-deck #menuScreen .stellar-home-toolbar {height:68px!important;min-height:68px!important;padding:12px 34px!important;margin:0!important;border:0!important;border-bottom:1px solid #ffffff20!important;border-radius:0!important;background:#141919!important;backdrop-filter:none!important;}
+body.command-deck #menuScreen .captain-bridge-label {color:#cbd0c5!important;font:11px monospace!important;letter-spacing:.16em!important;}
+body.command-deck #menuScreen .stellar-home-toolbar button {color:#d3d8cc!important;background:transparent!important;border-color:#ffffff30!important;font:10px monospace!important;}
+body.command-deck #menuScreen .stellar-home-hero {display:block!important;height:clamp(620px,73vh,850px)!important;min-height:620px!important;margin:0!important;border:0!important;border-bottom:1px solid #ffffff30!important;border-radius:0!important;background:radial-gradient(ellipse at 75% 38%,#556064 0%,#202d32 30%,#10181c 60%,#0d1215 100%)!important;box-shadow:none!important;backdrop-filter:none!important;isolation:isolate;}
+body.command-deck #menuScreen .stellar-home-hero::after {z-index:1!important;background:linear-gradient(90deg,#0b1115ed 0%,#0b1115bd 26%,#0b111538 53%,transparent 76%),linear-gradient(0deg,#0b1115e8,transparent 35%)!important;}
+body.command-deck #menuScreen :is(.stellar-hero-art,.stellar-hero-nebula,.aaa-hero-model,.hd-war-table,.stellar-home-message,.stellar-home-welcome,.ref-pilot-panel,.ref-slogan,.cb-hero-brief,.bridge-telemetry) {display:none!important;}
+body.command-deck #menuScreen .ref-menu-layer {position:absolute!important;inset:0!important;padding:55px 42px 85px!important;z-index:3!important;align-items:center!important;justify-content:flex-start!important;}
+body.command-deck #menuScreen .ref-menu-primary {align-items:flex-start!important;max-width:490px!important;width:48%!important;gap:0!important;filter:none!important;}
+body.command-deck #menuScreen .ref-menu-brand {text-align:left!important;text-shadow:none!important;}
+body.command-deck #menuScreen .ref-brand-symbol {display:none!important;}
+body.command-deck #menuScreen .ref-brand-title {font:clamp(42px,4.7vw,78px)/.95 Impact,'Arial Narrow',sans-serif!important;color:#f0f0e5!important;background:none!important;filter:none!important;letter-spacing:.015em!important;overflow-wrap:anywhere;}
+body.command-deck #menuScreen .ref-brand-tag {color:#f4d44d!important;font:10px/1.6 monospace!important;letter-spacing:.23em!important;margin:18px 0 0!important;}
+body.command-deck #menuScreen .ref-menu-ctas {width:min(360px,100%)!important;gap:8px!important;margin-top:25px!important;}
+body.command-deck #menuScreen .ref-main-cta {display:flex!important;align-items:center!important;gap:15px!important;min-height:62px!important;padding:12px 18px!important;border:1px solid #ffffff3b!important;border-left:3px solid #8c988b!important;border-radius:0!important;background:#151b1dc9!important;color:#e7e9de!important;box-shadow:none!important;transform:none!important;}
+body.command-deck #menuScreen .ref-main-cta strong {font-size:12px!important;letter-spacing:.12em!important;}
+body.command-deck #menuScreen .ref-main-cta small {font-size:10px!important;color:#a9b2ac!important;letter-spacing:.025em!important;}
+body.command-deck #menuScreen .ref-main-cta .ref-cta-icon {background:none!important;color:inherit!important;border:0!important;font-size:20px!important;width:24px!important;}
+body.command-deck #menuScreen #refMenuContinue {background:#f4d44d!important;border-color:#f4d44d!important;color:#171914!important;}
+body.command-deck #menuScreen #refMenuContinue small {color:#454832!important;}
+body.command-deck #menuScreen .ref-main-cta:hover {border-color:#f4d44d!important;background:#303629!important;}
+body.command-deck #menuScreen #refMenuContinue:hover {background:#ffe76f!important;}
+body.command-deck #menuScreen .stellar-home-content {margin:0!important;border:0!important;border-radius:0!important;background:#141919!important;backdrop-filter:none!important;padding:24px 34px!important;}
+body.command-deck #menuScreen .home-metrics {grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important;border-top:1px solid #ffffff20;}
+body.command-deck #menuScreen .home-metric {padding:18px 20px!important;border:0!important;border-right:1px solid #ffffff20!important;background:transparent!important;}
+body.command-deck #menuScreen .home-metric {border-radius:0!important;}
+body.command-deck #menuScreen .home-metric *,body.command-deck #menuScreen .home-dash-heading * {text-shadow:none!important;filter:none!important;}
+body.command-deck #menuScreen .home-metric:first-child {padding-left:0!important;}
+body.command-deck #menuScreen .home-metric>span {color:#9ca79d!important;font:9px monospace!important;}
+body.command-deck #menuScreen .home-metric strong {font:30px Impact,sans-serif!important;letter-spacing:.04em!important;color:#eff0e4!important;}
+body.command-deck #menuScreen .home-metric small {color:#929d93!important;}
+body.command-deck #menuScreen .home-dash-heading h2 {font-size:20px!important;}
+body.command-deck #menuScreen .status-live {border:0!important;background:transparent!important;color:#c6cdba!important;font:9px monospace!important;}
+body.command-deck #menuScreen .home-banner {display:none!important;}
+.command-kicker {color:#f4d44d;font:10px monospace;letter-spacing:.18em;margin-bottom:23px;display:flex;align-items:center;gap:10px;}
+.command-kicker::before {content:'';width:26px;height:3px;background:#f4d44d;}
+.command-description {max-width:330px;color:#b7c0bb;font-size:13px;line-height:1.8;margin:20px 0 0;}
+body.command-deck #menuScreen #commandFleet {position:absolute!important;inset:0!important;z-index:0!important;width:100%!important;height:100%!important;pointer-events:none;}
+.command-orbit-label {position:absolute!important;right:38px;top:30px;z-index:4!important;color:#c0c9c2;font:9px/1.9 monospace;letter-spacing:.16em;text-align:right;}
+.command-orbit-label b {display:block;color:#f4d44d;font-weight:500;}
+.command-ship-label {position:absolute!important;right:7%;bottom:135px;z-index:2!important;color:#e0e5d9;font:11px/1.8 monospace;letter-spacing:.12em;border-left:2px solid #f4d44d;padding-left:14px;}
+.command-ship-label small {display:block;color:#97a49e;font-size:9px;letter-spacing:.08em;}
+.command-bottom {position:absolute!important;bottom:0;left:0;right:0;z-index:4!important;min-height:49px;padding:13px 34px;border-top:1px solid #ffffff20;background:#11181bc7;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#b2bbae;font:9px monospace;letter-spacing:.1em;}
+.command-bottom span::before {content:'●';color:#f4d44d;margin-right:9px;}
+body.command-deck #fleetMotion {background:transparent!important;border:1px solid #ffffff30!important;padding:7px 10px;color:#c9d0c1;font:9px monospace;letter-spacing:.08em;}
+.fleet-fallback {position:absolute!important;right:-5%;top:6%;width:55%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 30%,#d7ddd2,#6b8b87 22%,#28444b 50%,#0c161d 72%);box-shadow:-14px -8px 65px #a6cccd44;z-index:0!important;}
+body.command-deck .screen:not(#menuScreen)::after {content:'';position:fixed;inset:-80px;pointer-events:none;background-image:radial-gradient(circle,#c8d7cb77 0 1px,transparent 1.5px),radial-gradient(circle,#f4d44d44 0 1px,transparent 1.5px);background-size:187px 173px,311px 293px;opacity:.24;z-index:0;animation:commandStars 70s linear infinite;}
+@keyframes commandStars {to{transform:translate3d(70px,50px,0);}}
+body.command-deck.fleet-paused *,body.command-deck.fleet-paused *::before,body.command-deck.fleet-paused *::after {animation:none!important;}
+body.command-deck .screen {animation:none!important;}
+body.command-deck :is(.checkpoint-dialog,.checkpoint-panel,.checkpoint-overlay .options button,.screen-top,.cb-command-dock .dock-inner) {background:#1b2222!important;border-color:#ffffff30!important;border-radius:2px!important;}
+body.command-deck .checkpoint-overlay {background:#101313f5!important;}
+body.command-deck #cbDockToggle {background:#353d33!important;border-color:#f4d44d88!important;}
+body.command-deck #menuScreen .stellar-game-name span {color:#f4d44d!important;}
+body.command-deck :is(#worldScreen,#selectScreen,#arcadeScreen,#combatScreen,#teacherScreen) {background:radial-gradient(ellipse at 80% 0%,#343b3c66,transparent 65%),#101313!important;}
+body.command-deck :is(#worldScreen,#selectScreen,#arcadeScreen,#combatScreen,#teacherScreen) :is(.screen-top,.ref-galaxy-map,.ref-galaxy-info,.ref-world-preview,.globe-details,.level-card,.arc-mode-card,.arc-hero,.cb-arcade-tools,.arc-play,.arc-aside,.teacher-panel,.teacher-side,.teacher-bridge-view,.arena-panel) {background:#161e1e!important;border-color:#ffffff30!important;border-radius:2px!important;box-shadow:none!important;}
+body.command-deck :is(#menuScreen,#worldScreen,#selectScreen,#arcadeScreen,#combatScreen,#teacherScreen,.app) * {text-shadow:none!important;}
+body.command-deck #worldScreen :is(.ref-enter-world,.ref-planet-title,.ref-planet-state) {border-radius:2px!important;}
+body.command-deck #worldScreen :is(.ref-planet-title,.ref-planet-state) {background:#151e1e!important;border-color:#b4c0ad66!important;color:#e0e5d9!important;}
+body.command-deck #worldScreen .ref-galaxy-core {opacity:.35!important;}
+body.command-deck #worldScreen .ref-galaxy-orbits path {stroke:#c5c99a!important;opacity:.35;}
+body.command-deck #worldScreen .ref-info-name {color:#eff0e4!important;}
+body.command-deck #worldScreen .ref-info-desc {color:#b5c0b6!important;}
+body.command-deck #menuScreen #hfVisualsButton {display:none!important;}
+body.command-deck #menuScreen .mini-progress {background:#30382e!important;}
+body.command-deck .app .layout>.panel,body.command-deck .app :is(.holo-deck,.cb-brief-tabs,.holo-mission-text,.holo-turn,.learn-boost-panel,.learn-boost-main,.learn-boost-sidebar,.learn-boost-chip,.holo-sim-status) {background:#171f1f!important;border:1px solid #ffffff26!important;border-radius:2px!important;box-shadow:none!important;}
+body.command-deck .app #codingLab {background:#141b1b!important;border-radius:2px!important;border-color:#ffffff26!important;}
+body.command-deck .app :is(.immersive-drone-panel,#cbConsoleTip,#hfGameTips) {display:none!important;}
+body.command-deck .app .holo-board-shell {max-width:540px!important;margin:12px auto!important;}
+body.command-deck .app #board {max-width:510px!important;}
+body.command-deck .app #codeEditor {min-height:210px!important;}
+body.command-deck .app .missionselect .selected {background:#f4d44d!important;color:#151914!important;}
+.command-coach {margin-top:16px;border:1px solid #ffffff26;background:#1b2422;border-radius:2px;}
+.command-coach>summary {cursor:pointer;padding:13px;color:#cfd7c9;font:10px/1.6 monospace;letter-spacing:.06em;}
+body.command-deck .command-coach .learn-boost-panel {margin:0!important;}
+@media(prefers-reduced-motion:reduce) {body.command-deck *,body.command-deck *::before,body.command-deck *::after {animation:none!important;transition:none!important;}}
+@media(min-width:1800px) {body.command-deck #menuScreen .ref-menu-primary {max-width:600px!important;}}
+@media(max-width:1100px) {
+ body.command-deck #menuScreen .stellar-home-shell {grid-template-columns:170px minmax(0,1fr)!important;}
+ body.command-deck #menuScreen .stellar-navigation {padding:26px 10px!important;}
+ body.command-deck #menuScreen .stellar-game-name {font-size:19px!important;}
+ body.command-deck #menuScreen .ref-menu-layer {padding-left:28px!important;padding-right:28px!important;}
+ body.command-deck #menuScreen .ref-menu-primary {width:55%!important;}
+ body.command-deck #menuScreen .ref-brand-title {font-size:48px!important;}
+ .command-ship-label {right:4%;font-size:9px;}
+}
+@media(max-width:720px) {
+ body.command-deck #menuScreen .stellar-home-shell {display:flex!important;flex-direction:column!important;}
+ body.command-deck #menuScreen .stellar-navigation {order:0!important;min-height:0!important;width:100%!important;padding:12px!important;border-bottom:1px solid #ffffff20!important;}
+ body.command-deck #menuScreen .stellar-identity {flex-direction:row!important;align-items:center!important;padding:0 4px 10px!important;}
+ body.command-deck #menuScreen .stellar-subtitle {margin-left:auto!important;font-size:8px!important;}
+ body.command-deck #menuScreen .stellar-menu-links {display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:4px!important;max-width:100%!important;}
+ body.command-deck #menuScreen .stellar-nav-btn {width:auto!important;flex:0 0 auto!important;min-height:36px!important;height:36px!important;font-size:9px!important;padding:7px 9px!important;}
+ body.command-deck #menuScreen :is(.nav-separator,.sidebar-bottom) {display:none!important;}
+ body.command-deck #menuScreen .stellar-home-main {order:1!important;}
+ body.command-deck #menuScreen .stellar-home-toolbar {padding:10px 16px!important;min-height:56px!important;height:auto!important;flex-direction:row!important;justify-content:space-between!important;}
+ body.command-deck #menuScreen .captain-bridge-label {font-size:9px!important;}
+ body.command-deck #menuScreen .stellar-home-hero {height:710px!important;min-height:710px!important;}
+ body.command-deck #menuScreen .stellar-home-hero::after {background:linear-gradient(0deg,#0b1115 0%,#0b1115e6 38%,#0b111522 75%)!important;}
+ body.command-deck #menuScreen .ref-menu-layer {padding:230px 24px 72px!important;align-items:flex-end!important;}
+ body.command-deck #menuScreen .ref-menu-primary {width:100%!important;max-width:440px!important;align-items:flex-start!important;}
+ body.command-deck #menuScreen .ref-brand-title {font-size:46px!important;text-align:left!important;}
+ body.command-deck #menuScreen .ref-menu-brand {text-align:left!important;}
+ body.command-deck #menuScreen .ref-brand-tag {font-size:9px!important;margin-top:10px!important;}
+ .command-kicker {margin-bottom:12px;font-size:9px;}
+ .command-description {margin-top:12px;font-size:12px;line-height:1.6;}
+ body.command-deck #menuScreen .ref-menu-ctas {margin-top:18px!important;width:100%!important;}
+ body.command-deck #menuScreen .ref-main-cta {min-height:55px!important;}
+ .command-orbit-label {right:18px;top:18px;font-size:8px;}
+ .command-ship-label {top:170px;bottom:auto;right:20px;font-size:9px;}
+ .command-bottom {padding:11px 16px;font-size:8px;}
+ body.command-deck #menuScreen .stellar-home-content {padding:20px!important;}
+ body.command-deck #menuScreen .home-metrics {grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+ body.command-deck #menuScreen .home-metric {padding:14px 10px!important;}
+ body.command-deck #menuScreen .home-metric:nth-child(3) {padding-left:0!important;}
+ body.command-deck #menuScreen .home-metric strong {font-size:26px!important;}
+}

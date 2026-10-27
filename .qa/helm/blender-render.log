@@ -1,0 +1,56 @@
+C:\Users\Admin\Desktop\caja_game\.qa\helm\blender\assets.py:63: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+C:\Users\Admin\Desktop\caja_game\.qa\helm\blender\assets.py:72: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\Admin\Desktop\caja_game\.qa\helm\blender\assets.py:89: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+00:06.218  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_agent.webp'
+00:10.625  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_core.webp'
+00:14.171  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_wall.webp'
+00:19.546  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_gate.webp'
+00:24.906  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_gate_open.webp'
+00:29.781  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_key.webp'
+00:34.953  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_door.webp'
+00:39.828  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_door_open.webp'
+00:45.234  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_data.webp'
+00:50.609  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_hazard.webp'
+00:55.656  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_switch.webp'
+01:00.453  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_switch_on.webp'
+01:05.859  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_bridge.webp'
+01:12.921  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_bridge_on.webp'
+01:19.500  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\piece_portal.webp'
+01:20.812  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\avatar_0.webp'
+01:22.281  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\avatar_1.webp'
+01:23.781  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\avatar_2.webp'
+01:25.296  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\avatar_3.webp'
+01:26.843  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\avatar_4.webp'
+01:28.312  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\avatar_5.webp'
+01:29.843  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\avatar_6.webp'
+01:31.546  render           | Saved: 'C:\Users\Admin\Desktop\caja_game\.qa\helm\assets\avatar_7.webp'
+RENDERED piece_agent
+RENDERED piece_core
+RENDERED piece_wall
+RENDERED piece_gate
+RENDERED piece_gate_open
+RENDERED piece_key
+RENDERED piece_door
+RENDERED piece_door_open
+RENDERED piece_data
+RENDERED piece_hazard
+RENDERED piece_switch
+RENDERED piece_switch_on
+RENDERED piece_bridge
+RENDERED piece_bridge_on
+RENDERED piece_portal
+RENDERED avatar_0
+RENDERED avatar_1
+RENDERED avatar_2
+RENDERED avatar_3
+RENDERED avatar_4
+RENDERED avatar_5
+RENDERED avatar_6
+RENDERED avatar_7
+DONE C:\Users\Admin\Desktop\caja_game\.qa\helm\assets
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:37:16)
+
+Blender quit

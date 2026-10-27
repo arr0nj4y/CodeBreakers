@@ -1,0 +1,5 @@
+Embedded fonts (all SIL Open Font License 1.1, from Google Fonts, latin subset):
+- Antonio (Vernon Adams) 500-700
+- Barlow (Jeremy Tribby) 400/500/600
+- JetBrains Mono (JetBrains) 400-600
+License: https://openfontlicense.org

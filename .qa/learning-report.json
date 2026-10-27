@@ -1,0 +1,41 @@
+{
+  "format": "codebreakers-progress-v1",
+  "student": "Learning Test",
+  "missions": [
+    0
+  ],
+  "xp": 181,
+  "combatWins": 0,
+  "arcade": {
+    "solved": {},
+    "xp": 0
+  },
+  "learning": {
+    "version": 1,
+    "missions": {
+      "0": {
+        "attempts": 2,
+        "completed": 2,
+        "supported": 0,
+        "independent": 1,
+        "transfer": 1,
+        "retained": 0,
+        "hints": 0,
+        "examples": 0,
+        "predictions": 0,
+        "predictionsCorrect": 0,
+        "lastPracticed": 1792811220938,
+        "lastIndependentAt": 1792811214277,
+        "lastTransferAt": 1792811220938,
+        "errors": {
+          "syntax": 0,
+          "collision": 0,
+          "hazard": 0,
+          "checkpoint": 0
+        },
+        "reflection": ""
+      }
+    }
+  },
+  "exportedAt": "2026-10-24T03:07:03.070Z"
+}

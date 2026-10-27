@@ -1,0 +1,124 @@
+{
+  "title": "Choose the visual world for CodeBreakers",
+  "question": "Your Star Trek / Helldivers brief is fixed. The roll picked which part of that world carries the game: keep the War Table, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Galactic War Table",
+      "kicker": "THE ROLL",
+      "lineage": "the holo war table on a starship command deck",
+      "thesis": "The whole game is played on the ship's war table: worlds are sectors you liberate with code, and every mission is projected onto the same table.",
+      "palette": ["#07090c", "#ffb35c", "#c9a2e0", "#8fd3ff", "#ffe14a"],
+      "materials": ["gunmetal console rails with warm color-block elbows", "hologram light only on the table", "hazard tape on deploy"],
+      "viewport": "A 3/4 view of the war table with five Blender-made 3D planets in orbit, a console rail for Campaign / Arcade / Combat / Teacher, and one hazard-yellow Deploy.",
+      "risk": "The spectacle could compete with the code editor, so the table must recede while the player is coding.",
+      "raised": [
+        {"from": "challenger-consumer", "raise": "Hazard yellow is reserved for things you can press; disabled actions lose it entirely."},
+        {"from": "challenger-gateboard", "raise": "A world or mission that changes state updates in place and holds its highlight until the player opens it."},
+        {"from": "challenger-catalog", "raise": "Each world owns fixed furniture: name plate, one-line skill note, liberation meter."},
+        {"from": "challenger-manual", "raise": "Console motion is mechanical: short stepped transitions, no floaty fades."},
+        {"from": "challenger-splitflap", "raise": "Panels never reflow on state change; only values flip inside fixed cells with tabular numerals."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Stratagem Call-in HUD",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "a drop trooper's helmet HUD and arrow-code call-ins",
+      "thesis": "Every program is a stratagem code: the arrow queue is entered like a call-in sequence and thrown onto the grid.",
+      "palette": ["#0c0d0b", "#ffe14a", "#f2efe6", "#e0492f"],
+      "materials": ["stencil numerals", "hazard chevrons", "visor HUD hairlines"],
+      "viewport": "Mission-first: the 7x7 grid fills the view as a top-down tactical feed, the arrow-code strip runs along the bottom, the editor slides out as a terminal.",
+      "risk": "The most familiar reading of the brief; the Star Trek half nearly disappears."
+    },
+    {
+      "id": "challenger-transit",
+      "label": "Star Lane Diagram",
+      "verdict": "competitive",
+      "lineage": "midnight enamel transit maps",
+      "thesis": "Each world is a colored hyperspace lane and every mission is a station on it; progress reads like a route map.",
+      "palette": ["#0e1a3a", "#f3efe4", "#e5483b", "#3f6fe0", "#f0b43c", "#3fae6a"],
+      "materials": ["enamel ground", "porcelain station ticks", "45/90-degree lane bends"],
+      "viewport": "The full five-lane network with the next station ringed; tapping a station opens its briefing beside the map.",
+      "case": "Fuses cleanly and is the clearest progress map, but players identify less with a transit chart than with a starship.",
+      "risk": "Drifts away from the Star Trek / Helldivers brief unless the lanes are dressed as starship navigation."
+    },
+    {
+      "id": "challenger-consumer",
+      "label": "Warm Consumer App",
+      "verdict": "declined",
+      "lineage": "friendly consumer app cards",
+      "thesis": "Soft cards, plain labels, one action color.",
+      "palette": ["#f4efe9", "#ffffff", "#ff6a3d"],
+      "materials": ["soft radii", "bottom bar"],
+      "viewport": "A scrolling column of mission cards with a bottom tab bar.",
+      "risk": "Breaks the sci-fi brief.",
+      "case": "Loses both axes: it ignores the brief and flattens the campaign.",
+      "kept": "One action color, used only where something can be pressed."
+    },
+    {
+      "id": "challenger-gateboard",
+      "label": "Boarding Pass + Gate Board",
+      "verdict": "declined",
+      "lineage": "airport departure boards",
+      "thesis": "Missions as flights reranking on a live board.",
+      "palette": ["#111316", "#f2f2ee", "#ffb000"],
+      "materials": ["segmented pass", "mono scan block"],
+      "viewport": "A departures board of missions ordered by readiness.",
+      "risk": "Reads as travel, not space.",
+      "case": "Loses both axes against the war table.",
+      "kept": "State changes move in place and stay lit until noticed."
+    },
+    {
+      "id": "challenger-catalog",
+      "label": "Character Goods Catalog",
+      "verdict": "declined",
+      "lineage": "pastel mascot rosters",
+      "thesis": "Worlds as a ranked cast of mascots.",
+      "palette": ["#ffe3ec", "#fff6d6", "#ff5c8a"],
+      "materials": ["keylined mascots", "ribbon colors"],
+      "viewport": "A pastel grid of world mascots.",
+      "risk": "Too young for senior high players.",
+      "case": "Loses both axes for this audience.",
+      "kept": "Each world gets fixed personal furniture: name plate and one-line note."
+    },
+    {
+      "id": "challenger-manual",
+      "label": "Acetate Manual Tab Board",
+      "verdict": "declined",
+      "lineage": "boxed-software reference manuals",
+      "thesis": "A tabbed manual with acetate leaves over colored boards.",
+      "palette": ["#e8602c", "#f2c230", "#2d8a7a", "#2c4bd6"],
+      "materials": ["acetate leaf", "stepped tab rail"],
+      "viewport": "An open manual at the current world's tab.",
+      "risk": "Print metaphor fights the bridge console.",
+      "case": "Loses both axes; strong only for the code reference.",
+      "kept": "Mechanical motion: short stepped changes, no easing fades."
+    },
+    {
+      "id": "challenger-splitflap",
+      "label": "Split-flap Concourse",
+      "verdict": "declined",
+      "lineage": "rail split-flap boards",
+      "thesis": "Status as cascading letter flaps.",
+      "palette": ["#121212", "#f4f4f0", "#ffb000", "#b8322b"],
+      "materials": ["flap cells", "steel frame"],
+      "viewport": "A departures board of missions.",
+      "risk": "Novelty wears off fast.",
+      "case": "Loses both axes.",
+      "kept": "Fixed cells; values change, layout never reflows."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A dark sci-fi game menu: centered logo, glowing buttons over a starfield, card grids for modes.",
+    "palette": ["#060a14", "#1b2a44", "#3ee0ff"],
+    "materials": ["starfield", "glow buttons"],
+    "viewport": "Logo and a stack of glowing buttons centered over space art.",
+    "risk": "Looks like every other space game, and close to what the file already has."
+  },
+  "steer": true
+}

@@ -1,0 +1,30 @@
+// Captures the dialogs: help, profile, sound settings, checkpoint, mission complete.
+const { chromium } = require('playwright');
+const path = require('path');
+const out = process.argv[2] || '.qa/shots';
+const url = 'file:///' + path.resolve('codebreakers_tripleA_cinematic_polish_v3.html').split(path.sep).join('/');
+(async () => {
+ const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
+ const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+ const errors = [];
+ page.on('pageerror', e => errors.push(e.message));
+ await page.goto(url); await page.waitForTimeout(1500);
+ const tool = async (name, close) => { await page.locator(`.rail-tool[data-tool="${name}"]`).click(); await page.waitForTimeout(300); await page.screenshot({ path: `${out}/dialog-${name}.png` }); await page.locator(close).click(); await page.waitForTimeout(200); };
+ await tool('help', '#closeHelp');
+ await tool('profile', '#profileClose');
+ await tool('settings', '#audioSettingsClose');
+ await page.locator('.pin[data-world="1"]').click(); await page.waitForTimeout(900);
+ await page.screenshot({ path: `${out}/deck-world2.png` });
+ await page.locator('#deployMission').click(); await page.waitForTimeout(500);
+ await page.screenshot({ path: `${out}/dialog-checkpoint.png` });
+ await page.locator('#checkpointDismiss').click();
+ await page.locator('#toMenu').click(); await page.waitForTimeout(300);
+ await page.locator('.pin[data-world="0"]').click(); await page.waitForTimeout(800);
+ await page.locator('#deployMission').click(); await page.waitForTimeout(400);
+ await page.locator('#codeEditor').fill('repeat(6) { moveRight(); }\nrepeat(6) { moveDown(); }');
+ await page.locator('#learnSpeed').selectOption('160');
+ await page.locator('#compileRun').click(); await page.waitForTimeout(3500);
+ await page.screenshot({ path: `${out}/dialog-complete.png` });
+ console.log('modal visible:', await page.locator('#modal').isVisible(), 'errors:', JSON.stringify(errors));
+ await browser.close();
+})().catch(e => { console.error(e); process.exit(1); });
