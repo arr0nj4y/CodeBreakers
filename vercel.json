@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/codebreakers_tripleA_cinematic_polish_v3.html"
+    }
+  ]
+}

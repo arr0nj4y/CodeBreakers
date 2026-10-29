@@ -2,6 +2,8 @@
 
 Open `codebreakers_tripleA_cinematic_polish_v3.html` in a browser to play. Keep `codebreakers_tripleA_cinematic_polish_v3.css` beside it; both files are needed for offline play. Fonts and artwork are embedded, so no internet connection is required.
 
+Vercel serves the game at the site root (`/`) using the rewrite in `vercel.json`. Redeploy after pushing changes to the deployment branch.
+
 - HTML: page structure and existing game scripts.
 - CSS: presentation, responsive layouts, fonts and visual assets, grouped in their original cascade order.
 - `.qa/`: build sources, the optional classroom server and verification scripts.
